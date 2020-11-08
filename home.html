@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="left name-in-hdr">Christopher Cooley</div>
+        <ul>
+            <li><a href="#about-me" class="header-icon">About</a></li>
+            <li><a href="#projects" class="header-icon">Projects</a></li>
+            <li><a href="#experience" class="header-icon">Experience</a></li>
+            <li><a href="#contact" class="header-icon">Contact</a></li>
+            <li><a href="Christopher_Cooley_9-14-20.pdf" class="header-icon resume">Resume</a></li>
+        </ul>
+        <!--mobile version only-->
+        <button onclick="hidePic()" class="hamburger">MENU</button>
+    </nav>
+    <div id="greeting">
+        <div class="bio-wrapper">
+            <img src="bio-headshot.jpeg" alt= "headshot in bio section">
+            <div class= "intro-thanks text-blue">
+                <h1 id="exclaim-the-name">Hi! I'm Chris</h1>
+                <p class="small-text">Thanks for checking out my page!</p>
+            </div>
+        </div>
+    </div>
+    <!--Change layout if the menu is open-->
+    <div id="alt-greeting">
+        <div class="alt-bio-wrapper">
+            <img src="alt-bio-headshot.jpeg" alt= "headshot in bio section">
+            <div class= "intro-thanks text-blue">
+                <h1 id="exclaim-the-name">That's better!</h1>
+                <p class="small-text">Felt a little too professionel, choose a Menu option to get to know me better</p>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+        <polygon points="100,0 100,10 0,10" />
+      </svg>
+    <div id="about-me" class="background-blue">
+        <h1 class= "text-white titles">About me</h1>
+        <div class= "bio-description">
+            <p class="text-white small-text">I'm currently a senior at the University of Michigan with a major in Computer
+                Science and a minor in French Language and Studies. I grew up just outside 
+                of Ann Arbor so attending UofM was always a goal of mine. Outside of school
+                I enjoy playing soccer, roller blading, and hanging out with my housemates.
+            </p>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+        <polygon points="0,0 0,10 100,0" />
+      </svg>
+    <div id="projects">
+        <h1 class="text-blue titles">Projects</h1>
+        <div class="all-projects-wrapper">
+            <div class="project-wrapper">
+                <div class="project-left">
+                    <h1 class="text-blue">Project Name</h1>
+                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
+                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
+                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    </p>
+                    <p>Text about how it was made/details</p>
+                </div>
+                <img src="project-holder.jpg">
+            </div>
+            <div class="project-wrapper">
+                <div class="project-left">
+                    <h1 class="text-blue">Project Name</h1>
+                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
+                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
+                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    </p>
+                    <p>Text about how it was made/details</p>
+                </div>
+                <img src="project-holder.jpg">
+            </div>
+            <div class="project-wrapper">
+                <div class="project-left">
+                    <h1 class="text-blue">Project Name</h1>
+                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
+                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
+                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    </p>
+                    <p>Text about how it was made/details</p>
+                </div>
+                <img src="project-holder.jpg">
+            </div>
+        </div>
+
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+        <polygon points="100,0 100,10 0,10" />
+      </svg>
+    <div id="experience" class="background-blue">
+        <h1 class="text-white titles">Experience/Work</h1>
+        <div class="text-white experience-work-container">
+            <div class= "exp-dimensions void-palio-shadow background-yellow">
+                <div id="void-image">
+                    <img id= "void-logo" src="void-logo.png" alt="Void tech consulting logo">
+                </div>
+                <div class="exp-text-padding exp-white-divider">
+                    <h1>Void Tech Consulting</h1>
+                    <h2>2020-current</h2>
+                    <p>ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
+                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
+                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi 
+                    </p>
+                </div>
+            </div>
+            <div class="exp-dimensions dhall-shadow">
+                <div id="mdining-image">
+                    <img id="mdining-logo" src="mdining-logo.jpg" alt="Michigan Dining logo">
+                </div>
+                <div class="exp-text-padding exp-yellow-divider">
+                    <h1>Student Manager</h1>
+                    <h2>2018-current</h2>
+                    <p>Starting as a Dining Service Worker, then a year as a Student Coordinator, and finally
+                        a Student Manager, I have gained many valuable skills such as effectively communicating within 
+                        a team, demonstrating... TODO
+                    </p>
+                </div>
+            </div>
+            <div class="exp-dimensions void-palio-shadow background-yellow">
+                <div id="palio-image">
+                    <img id="palio-logo" src="palio-logo.jpg" alt="Palio logo">
+                </div>
+                <div class="exp-text-padding exp-white-divider">
+                    <h1>Server</h1>
+                    <h2>2019</h2>
+                    <p>ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
+                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
+                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+        <polygon points="0,0 0,10 100,0" />
+      </svg>
+    <div id="contact">
+        <h1 class= "text-blue titles">Contact me</h1>
+        <div class="contact-wrapper">
+            <div class="chat-left">
+                <div class="chat-msg">
+                    <p class="chat-text">I'd love to chat!</p>
+                </div>
+                <div class="phone-number">
+                    <img src="phone.png" alt="phone">
+                    <p class="text-blue">734 660 1775</p>
+                </div>
+            </div>
+            <div class="chat-right">
+                <div class="form-top">
+                    <form>
+                        
+                        <input type="text" id="first-name" name="first-name" placeholder="First name:">
+                        <input type="text" id="email" name="email" placeholder="Email:">
+
+
+                    </form>
+                </div>
+                <div class="form-bottom">
+                    <textarea placeholder="Write your message here:"></textarea>
+                </div>
+                <div class="submit-form">
+                    <input type="submit" value="Send">
+                </div>
+                <div class="submit-button">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+        <polygon points="100,0 100,10 0,10" />
+      </svg>
+    <div class="footer">
+        <p>Email me at <a class="text-white" href="mailto:clcooley@umich.edu">clcooley@umich.edu</a></p>
+    </div>
+</body>
+<script src="nav.js"></script>
+</html>

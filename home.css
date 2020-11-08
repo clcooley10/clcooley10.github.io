@@ -1,0 +1,551 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+​
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+​
+/* Remove default margin */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd
+div {
+  margin: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+​
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+​
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+​
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+​
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+​
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* END OF RESET STYLES*/
+
+/*Fonts & colors*/
+@font-face {
+  font-family: mulish;
+  src: url(Mulish-Medium.ttf) 
+}
+
+.background-blue {
+  background-color: #474985;
+} 
+.background-yellow {
+  background-color: #DEB841;
+}
+.text-blue {
+  color: #474985;
+}
+.text-white {
+  color: white;
+}
+.small-text {
+  font-size: 1.5rem;
+}
+#exclaim-the-name {
+  font-size: 3rem;
+}
+
+/*Titles above each section*/
+.titles {
+  font-size: 2.5rem;
+  padding-left: 5rem;
+  padding-top: 4rem;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: white;
+  border-bottom: 5px solid #474985;
+}
+.nav-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 1.5rem;
+  
+}
+.name-in-hdr {
+  padding-left: 5rem;
+  color: #474985;
+  background-color: white;
+  font-size: 2.5rem;
+}
+.header-icon {
+  background-color: white;
+  color: #474985;
+  border: 3px solid #DEB841;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-icon:hover {
+  background-color: #DEB841;
+  color: white;
+}
+.resume {
+  padding: .3rem .3rem;
+  border: 3px solid  #DEB841;
+  border-radius: 8px;
+  background-color: #DEB841;
+  color: white;
+}
+.resume:hover {
+  background-color: white;
+  color: #474985;
+}
+
+/*Mobile Nav-bar*/
+.hamburger {
+  display: none;
+  background-color: #DEB841;
+  padding: .8rem;
+  margin: .3rem;
+}
+
+
+/*Start Greeting*/
+#greeting {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+#alt-greeting {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  display: none;
+  font-size: 3rem;
+  width:70%;
+}
+
+.bio-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.alt-bio-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+#greeting img {  
+  width: 35%;
+  border-radius:8px;
+}
+#alt-greeting img {
+  width: 80%;
+  border-radius: 8px;
+}
+
+/*Start About-Me*/
+#about-me {
+  border-bottom: 2px dashed #474985;
+}
+.bio-description {
+
+  width:50%;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+/*Start Project*/
+#projects {
+  margin-bottom: 3rem;
+}
+.all-projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: auto;
+  padding-top: 3rem;
+
+}
+.project-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+.project-wrapper:not(:nth-child(2)) {
+  border: 2px solid #474985;
+  background-color: #DEB841;
+  border-radius: 16px;
+  box-shadow: 0 0 1rem #474985;
+}
+.project-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+.project-spacing {
+  padding: 1rem 0;
+}
+
+.project-wrapper img {
+  height: 20rem;
+  padding-left: 5rem;
+}
+
+/*Start experience section*/
+#experience {
+
+}
+.experience-work-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3rem 0;
+}
+.exp-dimensions {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  width: 24%;
+}
+.void-palio-shadow {
+  border: 2px solid white;
+  box-shadow: 0 0 1rem white;
+}
+.dhall-shadow {
+  border: 2px solid #DEB841;
+  box-shadow: 0 0 1rem #DEB841;
+}
+.exp-text-padding {
+  padding: 1rem;
+}
+.exp-white-divider {
+  border-top: 2px solid white;
+}
+.exp-yellow-divider {
+  border-top: 2px solid #DEB841;
+}
+#void-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mdining-image {
+  display: flex;
+  justify-content: center;
+}
+#palio-image {
+  display: flex;
+  justify-content: center;
+}
+#void-logo {
+  height: 8rem;
+  margin: 1rem 0;
+}
+#mdining-logo {
+  height: 6rem;
+  width: 16rem;
+  margin: 2rem 0;
+}
+#palio-logo {
+  height: 6rem;
+  width: 18rem;
+  margin: 2rem 0;
+}
+
+/*Start contact info*/
+#contact {
+  height: 25rem;
+}
+.contact-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4rem 0;
+}
+.chat-left {
+  display: flex;
+  flex-direction: column;
+}
+.chat-msg {
+  font-size: 4rem;
+  width: 13rem;
+  text-align: center;
+}
+.phone-number {
+  display: flex;
+  justify-content: center;
+}
+#contact img {
+  width: 1rem;
+}
+input[class="form-top"], select {
+  width: 49%;
+  padding: 12px;
+  border: 1px solid #474985;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[class="form-bottom"], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #474985;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 5rem;
+  background-color: #474985;
+  font-size:2rem;
+  color: white;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 5rem;
+  fill: #474985;
+
+}
+
+/*Fix palio logo*/
+@media screen and (max-width: 1250px) {
+  #palio-logo {
+    height: 5rem;
+    width: 15rem;
+    margin: 2.5rem 0;
+  }
+}
+
+/*Fix exp logos*/
+@media screen and (max-width: 1000px) {
+  #void-logo {
+    height: 6rem;
+    margin: 2rem 0;
+  }
+  #mdining-logo {
+    height: 4rem;
+    width: 10.66666rem;
+    margin: 3rem 0;
+  }
+  #palio-logo {
+    height: 4rem;
+    width: 12rem;
+    margin: 3rem 0;
+  }
+}
+/*left aligns the name in header*/
+@media screen and (max-width: 900px) {
+
+  .nav-bar ul {
+    width: 60%;
+  }
+  .name-in-hdr {
+    font-size: 2rem;
+    padding-left: 0;
+  }
+  .bio-description {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .titles {
+    padding-top: 2rem;
+  }
+  /* navbar css for mobile start */
+  .hamburger{
+    display: block;
+  }
+  .nav-bar {
+    height: 60px;
+    overflow: visible;
+  }
+  .nav-bar ul {
+    position: absolute;
+    width: 100%;
+    height: 290px; 
+    left: 0;
+    top: 80px;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s;
+  }
+  .nav-bar ul li {
+    width: 100%;
+    text-align: end;
+  }
+  .nav-bar ul li a {
+    padding: 15px;
+  }
+  .nav-bar ul.open {
+    max-height: 100vh;
+    overflow: visible;
+  }
+  /* navbar css for mobile end */
+
+  .bio-wrapper {
+    width: 70%;
+    flex-direction: column;
+  }
+  #greeting img {
+    width: 75%;
+  }
+  
+  /*Projects Start*/
+  #projects {
+    margin-bottom: 4rem;
+  }
+  .all-projects-wrapper {
+    padding-top: 3rem;
+  }
+  .project-wrapper {
+    flex-direction: column-reverse;
+  }
+  .project-wrapper img {
+    padding-left: 0;
+  }
+  .project-left {
+    width: 90%;
+  }
+  /*Exp start*/
+  .experience-work-container {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+  .exp-dimensions {
+    width: 85%;
+    margin: .5rem 0;
+  }
+  #void-logo {
+    height: 10rem;
+    margin: 0;
+  }
+  #mdining-logo {
+    height: 8rem;
+    width: 22rem;
+    margin: 1rem 0;
+  }
+  #palio-logo {
+    height: 10rem;
+    width: 22rem;
+    margin: 1rem 0;
+  }
+}
+/* mobile breakpoint end */
+
+/*small phone*/
+@media screen and (max-width: 400px) {
+  #exclaim-the-name {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .small-text {
+    text-align: center;
+  }
+
+  .titles {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /*Insert project fixes here*/
+  .all-projects-wrapper {
+    max-width: 90%;
+  }
+  /*Exp stuff*/
+  .
+  #void-logo {
+    height: 7rem;
+  }
+  #mdining-logo {
+    height: 4rem;
+    width: 16rem;
+  }
+  #palio-logo {
+    height: 5rem;
+    width: 16rem;
+  }
+
+  /*Insert Contact stuff*/
+
+
+  /*footer*/
+  .footer {
+    font-size: 1.2rem;
+  }
+}
