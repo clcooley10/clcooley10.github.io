@@ -1,72 +1,3 @@
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-​
-/* Remove default padding */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-​
-/* Remove default margin */
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd
-div {
-  margin: 0;
-  margin-block-end: 0;
-  margin-block-start: 0;
-}
-​
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-​
-/* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
-  list-style: none;
-}
-​
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-​
-/* Make images easier to work with */
-img {
-  max-width: 100%;
-  display: block;
-}
-​
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-/* END OF RESET STYLES*/
-
 /*Fonts & colors*/
 @font-face {
   font-family: mulish;
@@ -136,6 +67,7 @@ select {
   border: 3px solid #DEB841;
   cursor: pointer;
   text-decoration: none;
+  padding: .2rem;
 }
 
 .header-icon:hover {
@@ -143,15 +75,12 @@ select {
   color: white;
 }
 .resume {
-  padding: .3rem .3rem;
-  border: 3px solid  #DEB841;
+  border: 3px solid  #474985;
   border-radius: 8px;
-  background-color: #DEB841;
-  color: white;
+  
 }
 .resume:hover {
-  background-color: white;
-  color: #474985;
+  background-color: #474985;
 }
 
 /*Mobile Nav-bar*/
@@ -315,44 +244,63 @@ select {
   height: 25rem;
 }
 .contact-wrapper {
+  justify-content: space-around;
   display: flex;
-  justify-content: space-evenly;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 .chat-left {
   display: flex;
   flex-direction: column;
 }
 .chat-msg {
-  font-size: 4rem;
-  width: 13rem;
+  font-size: 6rem;
+  width: 19rem;
   text-align: center;
 }
 .phone-number {
   display: flex;
   justify-content: center;
+  font-size: 2rem;
 }
 #contact img {
-  width: 1rem;
+  width: 2rem;
 }
-input[class="form-top"], select {
-  width: 49%;
-  padding: 12px;
+.top-form-row {
+  display: flex;
+  justify-content: space-between;
+}
+.chat-right {
+  padding: 1rem 0 0 0;
+  text-align: center;
+}
+.mc-field-group {
+  padding: .2rem .3rem;
+}
+input[type="email"] {
+  padding: 1rem .5rem .6rem;
   border: 1px solid #474985;
   border-radius: 4px;
-  box-sizing: border-box;
+}
+input[type="text"] {
+  padding: 1rem .5rem .6rem;
+  border: 1px solid #474985;
+  border-radius: 4px;
+}
+::placeholder {
+  font-size: 1.4rem;
 }
 
-input[class="form-bottom"], textarea {
+
+input[type="textarea"] {
   width: 100%;
-  padding: 12px;
+  padding: 1rem .5rem .6rem;
   border: 1px solid #474985;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: #474985;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -420,7 +368,7 @@ svg {
 }
 @media screen and (max-width: 650px) {
   .titles {
-    padding-top: 2rem;
+    padding-top: 5rem;
   }
   /* navbar css for mobile start */
   .hamburger{
@@ -528,7 +476,6 @@ svg {
     max-width: 90%;
   }
   /*Exp stuff*/
-  .
   #void-logo {
     height: 7rem;
   }

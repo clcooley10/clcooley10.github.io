@@ -12,6 +12,7 @@ ol[class] {
 }
 ​
 /* Remove default margin */
+html,
 body,
 h1,
 h2,
@@ -25,8 +26,11 @@ figure,
 figcaption,
 blockquote,
 dl,
-dd {
+dd
+div {
   margin: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 ​
 /* Set core body defaults */
@@ -61,4 +65,3 @@ textarea,
 select {
   font: inherit;
 }
-
