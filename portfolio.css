@@ -17,7 +17,7 @@
   color: white;
 }
 .small-text {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 #exclaim-the-name {
   font-size: 3rem;
@@ -103,7 +103,7 @@
   padding-bottom: 4rem;
   display: none;
   font-size: 3rem;
-  width:70%;
+  width: 70%;
 }
 
 .bio-wrapper {
@@ -135,8 +135,7 @@
   border-bottom: 2px dashed #474985;
 }
 .bio-description {
-
-  width:50%;
+  width:60%;
   margin: 5rem auto;
   text-align: center;
 }
@@ -240,22 +239,24 @@
 }
 
 /*Start contact info*/
-#contact {
-  height: 25rem;
-}
 .contact-wrapper {
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
-  padding: 2rem 0;
+  padding: 5rem 13rem;
+
 }
 .chat-left {
   display: flex;
   flex-direction: column;
-}
+  border-left: 3px solid #DEB841;
+  border-top: 3px solid #DEB841;
+}/*CHANGE ADDRESS ON RESUME --> NOOP*/
 .chat-msg {
   font-size: 6rem;
   width: 19rem;
   text-align: center;
+  color: #474985;
+
 }
 .phone-number {
   display: flex;
@@ -265,13 +266,17 @@
 #contact img {
   width: 2rem;
 }
+.aligned-center {
+  text-align: center;
+}
 .top-form-row {
   display: flex;
   justify-content: space-between;
 }
 .chat-right {
-  padding: 1rem 0 0 0;
-  text-align: center;
+  padding: 4rem 0 0 0;
+  border-right: 3px solid #DEB841;
+  border-bottom: 3px solid #DEB841;
 }
 .mc-field-group {
   padding: .2rem .3rem;
@@ -280,11 +285,13 @@ input[type="email"] {
   padding: 1rem .5rem .6rem;
   border: 1px solid #474985;
   border-radius: 4px;
+  width: 100%;
 }
 input[type="text"] {
   padding: 1rem .5rem .6rem;
   border: 1px solid #474985;
   border-radius: 4px;
+  width: 100%
 }
 ::placeholder {
   font-size: 1.4rem;
@@ -303,6 +310,7 @@ input[type=submit] {
   background-color: #474985;
   color: white;
   padding: 12px 20px;
+  margin: .2rem .3rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -351,6 +359,10 @@ svg {
     width: 12rem;
     margin: 3rem 0;
   }
+  .contact-wrapper {
+    justify-content: space-evenly;
+    padding: 2rem 0 0 0;
+  }
 }
 /*left aligns the name in header*/
 @media screen and (max-width: 900px) {
@@ -364,6 +376,10 @@ svg {
   }
   .bio-description {
     width: 80%;
+  }
+  .chat-msg {
+    font-size: 5rem;
+    width: 16rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -450,6 +466,34 @@ svg {
     height: 10rem;
     width: 22rem;
     margin: 1rem 0;
+  }
+
+  /*Contact Start*/
+  .contact-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    padding: .5rem;
+  }
+  .chat-msg {
+    width: 50%;
+  }
+  .chat-right {
+    padding: 0;
+
+  }
+  .chat-left {
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+  }
+  #contact img {
+    height: 2rem; 
+  }
+  input[type="email"] {
+    width: 16.67rem;
+  }
+  input[type="text"] {
+    width: 16.67rem;
   }
 }
 /* mobile breakpoint end */
