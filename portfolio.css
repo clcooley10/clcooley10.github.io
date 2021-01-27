@@ -193,6 +193,7 @@
   display: flex;
   flex-direction: column;
   width: 40%;
+  padding-left: 1rem;
 }
 .project-spacing {
   padding: 1rem 0;
@@ -201,6 +202,9 @@
 .project-wrapper img {
   height: 20rem;
   padding-left: 5rem;
+}
+#grow-logo {
+  padding: 0 6rem 0 8rem;
 }
 
 /*Start experience section*/
@@ -356,7 +360,6 @@ svg {
 
 }
 
-/*Fix palio logo*/
 @media screen and (max-width: 1250px) {
   #palio-logo {
     height: 5rem;
@@ -365,7 +368,6 @@ svg {
   }
 }
 
-/*Fix exp logos*/
 @media screen and (max-width: 1000px) {
   #void-logo {
     height: 6rem;

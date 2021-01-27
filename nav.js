@@ -31,3 +31,4 @@ function hidePic() {
     altGreeting.style.display = "flex"
   }
 }
+

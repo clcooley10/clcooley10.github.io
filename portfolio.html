@@ -15,7 +15,7 @@
             <li><a href="#projects" class="header-icon">Projects</a></li>
             <li><a href="#experience" class="header-icon">Experience</a></li>
             <li><a href="#contact" class="header-icon">Contact</a></li>
-            <li><a href="Christopher_Cooley_9-14-20.pdf" class="header-icon resume">Resume</a></li>
+            <li><a href="ChristopherCooleyResume.pdf" class="header-icon resume">Resume</a></li>
         </ul>
         <!--mobile version only-->
         <button onclick="hidePic()" class="hamburger">MENU</button>
@@ -26,6 +26,16 @@
             <div class= "intro-thanks text-blue">
                 <h1 id="exclaim-the-name">Hi! I'm Chris</h1>
                 <p class="small-text">Thanks for checking out my page!</p>
+                <p id="show_on_desktop" class="small-text">Get your money's worth, try the mobile layout!</p>
+
+                <!--Don't tell people to try the mobile if already on mobile-->
+                <script>
+                    window.onresize = function() {
+                    if (window.screen.width < 650) {
+                        document.getElementById("show_on_desktop").innerHTML = "";
+                    }
+                }
+                </script>
             </div>
         </div>
     </div>
@@ -74,45 +84,34 @@
         <div class="all-projects-wrapper">
             <div class="project-wrapper">
                 <div class="project-left">
-                    <h1 class="text-blue">Project Name</h1>
-                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
-                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
-                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    <h1 class="text-blue">Project-grow website</h1>
+                    <p class="project-spacing">Project Grow is a local Community Gardening organization, who we partnered with
+                    to create a brand-new website that would meet all of their needs. The site is written in HTML, CSS, and PHP, which lets
+                    us use the WordPress customization options to allow for easily customizable layouts. Pages include templated layouts
+                    that can be added or removed to accomodate the seasonal services they offer, as well as the rotating classes and events.
                     </p>
-                    <p>Text about how it was made/details</p>
+                    <p>Our team of 5 developers is creating this website in a semester as our project. Pages were either designated to a single person
+                    or were given to groups of two, which created a sense of teamwork and experience working on projects in small groups.
+                    A link will be made available when it is finished.
+                    </p>
                 </div>
-                <img src="project-holder.jpg">
+                <img src="grow-logo.png" id="grow-logo">
             </div>
             <div class="project-wrapper">
                 <div class="project-left">
-                    <h1 class="text-blue">Project Name</h1>
-                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
-                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
-                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    <h1 class="text-blue">Sudoku</h1>
+                    <p class="project-spacing">This program solves pre-generated boards on the fly and allows 
+                    playing Sudoku at the command line. Functionality includes playing 4 different difficulties, giving hints,
+                    ability to undo moves, see which numbers remain in each row, as well as see statistics about your game play. Future goals include
+                    creating a server which would allow statistics to persist across games, as well as a website which could host the game to create 
+                    a more customizable layout than is offered at the command line.
                     </p>
-                    <p>Text about how it was made/details</p>
-                </div>
-                <img src="project-holder.jpg">
-            </div>
-            <div class="project-wrapper">
-                <div class="project-left">
-                    <h1 class="text-blue">Project Name</h1>
-                    <p class="project-spacing">ipsum "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
-                        et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                        qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum 
-                        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
+                    <p>This was created as a gift for my girlfriend. It is written in python and was developed to be as user-friendly as possible.
+                    This included many error-handling measures to ensure that she could easily undo anything she did, and provide an easy to use
+                    interface even when she is unfamilar with using a terminal.
                     </p>
-                    <p>Text about how it was made/details</p>
                 </div>
-                <img src="project-holder.jpg">
+                <img src="sudoku.png">
             </div>
         </div>
 
