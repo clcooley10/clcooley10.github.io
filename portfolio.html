@@ -22,19 +22,24 @@
     </nav>
     <div id="greeting">
         <div class="bio-wrapper">
-            <img src="bio-headshot.jpeg" alt= "headshot in bio section">
+            <img src="images/bio-headshot.jpeg" alt= "headshot in bio section">
             <div class= "intro-thanks text-blue">
                 <h1 id="exclaim-the-name">Hi! I'm Chris</h1>
                 <p class="small-text">Thanks for checking out my page!</p>
-                <p id="show_on_desktop" class="small-text">Get your money's worth, try the mobile layout!</p>
-
-                <!--Don't tell people to try the mobile if already on mobile-->
+                <p id="show_on_desktop" class="small-text">Get your money's worth, mobile starts at 650px</p>
+                <p>Current browser width: <span id="browser-width"></span>px</p>
+                
                 <script>
-                    window.onresize = function() {
-                    if (window.screen.width < 650) {
-                        document.getElementById("show_on_desktop").innerHTML = "";
+                    window.onload = function() {
+                        document.getElementById("browser-width").innerHTML = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
                     }
-                }
+                    window.onresize = function() {
+                        document.getElementById("browser-width").innerHTML = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                        //Don't tell people to try the mobile if already on mobile
+                        if (window.screen.width < 650) {
+                            document.getElementById("show_on_desktop").innerHTML = "Open the menu to view options!";
+                        }
+                    }
                 </script>
             </div>
         </div>
@@ -42,7 +47,7 @@
     <!--Change layout if the menu is open-->
     <div id="alt-greeting">
         <div class="alt-bio-wrapper">
-            <img src="alt-bio-headshot.jpeg" alt= "headshot in bio section">
+            <img src="images/alt-bio-headshot.jpeg" alt= "headshot in bio section">
             <div class= "intro-thanks text-blue">
                 <h1 id="exclaim-the-name">That's better!</h1>
                 <p class="small-text">Felt a little too professionel, choose a Menu option to get to know me better</p>
@@ -55,22 +60,22 @@
     <div id="about-me" class="background-blue">
         <h1 class= "text-white titles">About me</h1>
         <div class= "bio-description">
-            <p class="text-white small-text">I'm currently a senior at the University of Michigan with a major in Computer
-                Science and a minor in French Language and Studies. I grew up just outside 
-                of Ann Arbor so attending UofM was always a goal of mine. Outside of school
-                I enjoy playing soccer, roller blading, and hanging out with my housemates.
+            <p class="text-white small-text">I am a recent graduate from the University of Michigan with a major in Computer
+                Science and a minor in French Language and Studies. I am looking forward to my first professional experience somewhere
+                where I can put my classes to use, as well as learn even more. I have taken an amalgum of different classes at UofM but 
+                my biggest interests right now are human centered software design and interactive, intuitive website design.
             </p>
             <div class="languages-pics">
                 <div class="cpp flex-dir-col">
-                    <img src="c++logo.svg" alt="c++ logo">
+                    <img src="images/c++logo.svg" alt="c++ logo">
                     <p class="lang-names">c/c++</p>
                 </div>
                 <div class="html flex-dir-col">
-                    <img src="htmlcssLogo.svg" alt="html logo">
-                    <p class="lang-names make-level">html/css</p>
+                    <img src="images/htmlcssLogo.svg" alt="html logo">
+                    <p class="lang-names make-level">html/css/JS</p>
                 </div>
                 <div class="python flex-dir-col">
-                    <img src="pythonLogoBW.svg" alt="python logo">
+                    <img src="images/pythonLogoBW.svg" alt="python logo">
                     <p class="lang-names make-level">python</p>
                 </div>
             </div>
@@ -86,16 +91,16 @@
                 <div class="project-left">
                     <h1 class="text-blue">Project-grow website</h1>
                     <p class="project-spacing">Project Grow is a local Community Gardening organization, who we partnered with
-                    to create a brand-new website that would meet all of their needs. The site is written in HTML, CSS, and PHP, which lets
+                    to create a brand-new website that would meet all of their needs. The site is written in HTML, CSS, JS, and PHP, which lets
                     us use the WordPress customization options to allow for easily customizable layouts. Pages include templated layouts
                     that can be added or removed to accomodate the seasonal services they offer, as well as the rotating classes and events.
                     </p>
-                    <p>Our team of 5 developers is creating this website in a semester as our project. Pages were either designated to a single person
+                    <p>Our team of 5 developers created this website in a semester as our project. Pages were either designated to a single person
                     or were given to groups of two, which created a sense of teamwork and experience working on projects in small groups.
-                    A link will be made available when it is finished.
+                    We had regular code reviews to ensure timelines were met, and clean code was added to the repos.
                     </p>
                 </div>
-                <img src="grow-logo.png" id="grow-logo">
+                <img src="images/grow-logo.png" id="grow-logo">
             </div>
             <div class="project-wrapper">
                 <div class="project-left">
@@ -111,7 +116,25 @@
                     interface even when she is unfamilar with using a terminal.
                     </p>
                 </div>
-                <img src="sudoku.png">
+                <img src="images/sudoku.png">
+            </div>
+            <div class="project-wrapper">
+                <div class="project-left">
+                    <h1 class="text-blue">Chrome Extension</h1>
+                    <p class="project-spacing">As a senior project, myself and a team of 3 others built a chrome extension.
+                    The class focused on human centered design, and projects had to include a "Not You" component, meaning the project had 
+                    to have end users who differ significantly from us as the developers. We chose to create a time management tool for individuals
+                    with ADHD, or other attention disorders. On countdown, chrome tabs could automatically close themselves, ending potential hyper-focus, 
+                    a common trait in individuals with ADHD.
+                    Over a semester, we covered every step in the project cycle. From initial concepts, to writing Gantt charts,
+                    interviewing mock users ith a prototyped product, building, testing, the works. We whiteboarded ideas, features, flex-goals, and ultimately, a clean UI to
+                    produce an extension with good UX. 
+                    </p>
+                    <p>This project was written in HTML, CSS, and primarily JavaScript. I gained experience creating chrome extensions, and 
+                    working with various APIs. I have improved my ability to work in a team, as well as how to design for users who differ from myself.
+                    </p>
+                </div>
+                <img src="images/chrome_extension.png">
             </div>
         </div>
 
@@ -124,7 +147,7 @@
         <div class="text-white experience-work-container">
             <div class= "exp-dimensions void-palio-shadow background-yellow">
                 <div id="void-image">
-                    <img id= "void-logo" src="void-logo.png" alt="Void tech consulting logo">
+                    <img id="void-logo" src="images/void-logo.png" alt="Void tech consulting logo">
                 </div>
                 <div class="exp-text-padding exp-white-divider">
                     <h1>Void Tech Consulting</h1>
@@ -138,11 +161,11 @@
             </div>
             <div class="exp-dimensions dhall-shadow">
                 <div id="mdining-image">
-                    <img id="mdining-logo" src="mdining-logo.jpg" alt="Michigan Dining logo">
+                    <img id="mdining-logo" src="images/mDining-logo.jpg" alt="Michigan Dining logo">
                 </div>
                 <div class="exp-text-padding exp-yellow-divider">
                     <h1>Student Manager</h1>
-                    <h2>2018-current</h2>
+                    <h2>2018-2021</h2>
                     <p>Starting as a Dining Service Worker, then a year as a Student Coordinator, and finally
                         a Student Manager, I have gained valuable skills such as effectively communicating within 
                         a team, demonstrating my knowledge through helping new employees. I was regularly responsible for the 
@@ -154,7 +177,7 @@
             </div>
             <div class="exp-dimensions void-palio-shadow background-yellow">
                 <div id="palio-image">
-                    <img id="palio-logo" src="palio-logo.jpg" alt="Palio logo">
+                    <img id="palio-logo" src="images/palio-logo.jpg" alt="Palio logo">
                 </div>
                 <div class="exp-text-padding exp-white-divider">
                     <h1>Server</h1>
@@ -178,7 +201,7 @@
                     <p class="chat-text">I'd love to chat!</p>
                 </div>
                 <div class="phone-number">
-                    <img src="phone.png" alt="phone">
+                    <img src="images/phone.png" alt="phone">
                     <p class="text-blue aligned-center">734 660 1775</p>
                 </div>
             </div>
@@ -227,4 +250,5 @@
     </div>
 </body>
 <script src="nav.js"></script>
+<script src="broswer_width.js"></script>
 </html>
