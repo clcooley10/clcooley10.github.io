@@ -190,12 +190,10 @@
   border: 2px solid #474985;
   background-color: #DEB841;
   border-radius: 16px;
-  box-shadow: 0 0 1rem #474985;
 }.project-wrapper:nth-child(odd) {
   border: 2px solid #DEB841;
   background-color: #474985;
   border-radius: 16px;
-  box-shadow: 0 0 1rem #DEB841;
   color: white;
 }
 .project-left {
@@ -296,22 +294,20 @@
   color: #474985;
 
 }
-#contact-phone-number {
+.contact-methods {
   display: flex;
   justify-content: space-between;
+}
+#contact-phone-number {
   font-size: 2rem;
 }
 #contact img {
   width: 2rem;
 }
 #contact-email {
-  display: flex;
-  justify-content: space-between;
   font-size: 1.5rem;
 }
 #contact-linkedin {
-  display: flex;
-  justify-content: space-between;
   font-size: 1.5rem;
 }
 .aligned-center {
@@ -338,6 +334,7 @@ svg {
   text-align: center;
   color: white;
 }
+/*Fixes Palio logo*/
 @media screen and (max-width: 1250px) {
   #palio-logo {
     height: 5rem;
@@ -345,7 +342,7 @@ svg {
     margin: 2.5rem 0;
   }
 }
-
+/*Fixes work photos*/
 @media screen and (max-width: 1000px) {
   #void-logo {
     height: 6rem;
@@ -384,6 +381,7 @@ svg {
     width: 16rem;
   }
 }
+/*Switches to mobile layout*/
 @media screen and (max-width: 650px) {
   .titles {
     padding-top: 5rem;
@@ -433,9 +431,8 @@ svg {
   .languages-pics {
     width: 100%;
     flex-direction: column;
-
   }
-  .flex-dir-col:not(:nth-child(2)) {
+  .flex-dir-col:nth-child(odd) {
     align-items: center;
     padding: 3rem 0 3rem 0;
     border-left: 3px solid #DEB841;
@@ -446,7 +443,6 @@ svg {
     align-items: center;
     padding: 3rem 0 3rem 0;
     border-right: 3px solid #DEB841;
-
   }
   
   /*Projects Start*/
@@ -459,8 +455,8 @@ svg {
   .project-wrapper {
     flex-direction: column-reverse;
   }
-  .project-wrapper img {
-    padding-left: 0;
+  .project-img-wrap {
+    height: unset;
   }
   .project-left {
     width: 90%;
@@ -502,27 +498,27 @@ svg {
   }
   .chat-right {
     padding: 0;
-
   }
   .chat-left {
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
   }
+  .chat-right {
+    width: unset;
+  }
+  .contact-methods {
+    width: 60%;
+    margin: auto
+  }
   #contact img {
     height: 2rem; 
-  }
-  input[type="email"] {
-    width: 16.67rem;
-  }
-  input[type="text"] {
-    width: 16.67rem;
   }
 }
 /* mobile breakpoint end */
 
 /*small phone*/
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   #exclaim-the-name {
     font-size: 2rem;
     text-align: center;
@@ -556,10 +552,16 @@ svg {
   }
 
   /*Insert Contact stuff*/
-
-
-  /*footer*/
-  .footer {
-    font-size: 1.2rem;
+  .chat-text {
+    font-size: 4rem;
   }
+}
+@media screen and (max-width: 450px) {
+  .small-text {
+    font-size: 1rem;
+  }
+  .chat-text {
+    font-size: 3rem;
+  }
+
 }
