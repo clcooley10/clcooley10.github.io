@@ -7,6 +7,10 @@ const navLinks = document.querySelectorAll('.nav-bar a');
 // On initial page load, ask guest to enter name, and prep to show their screen size
 window.onload = function() {
     let guestName = prompt("Please enter your name, leave blank for pseudonym Sam", "Sam");
+    if (guestName[0] === '<' || '&') {
+        alert("Why yes I did barely sanitize this input! I'll just call you hacker.");
+        guestName = "hacker";
+    }
     var i = 0, len = insertNameHere.length;
     while (i < len) {
         insertNameHere[i].innerHTML = guestName;
