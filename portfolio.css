@@ -175,36 +175,46 @@
   max-width: 80%;
   margin: auto;
   padding-top: 3rem;
+  overflow: auto;
+  height: 28rem;
 
 }
 .project-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  margin: 2rem 0;
+  padding: 1rem;
 }
-.project-wrapper:not(:nth-child(2)) {
+.project-wrapper:nth-child(even) {
   border: 2px solid #474985;
   background-color: #DEB841;
   border-radius: 16px;
   box-shadow: 0 0 1rem #474985;
+}.project-wrapper:nth-child(odd) {
+  border: 2px solid #DEB841;
+  background-color: #474985;
+  border-radius: 16px;
+  box-shadow: 0 0 1rem #DEB841;
+  color: white;
 }
 .project-left {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   padding-left: 1rem;
 }
 .project-spacing {
   padding: 1rem 0;
 }
-
-.project-wrapper img {
+.project-img-wrap {
+  display: flex;
+  justify-content: center;
+  width: 50%;
   height: 20rem;
-  padding-left: 5rem;
 }
-#grow-logo {
-  padding: 0 6rem 0 8rem;
+.project-wrapper img {
+  max-width: 100%;
 }
 
 /*Start experience section*/
@@ -257,11 +267,13 @@
   height: 6rem;
   width: 16rem;
   margin: 2rem 0;
+  max-width: 100%;
 }
 #palio-logo {
   height: 6rem;
   width: 18rem;
   margin: 2rem 0;
+  max-width: 100%;
 }
 
 /*Start contact info*/
@@ -276,7 +288,7 @@
   flex-direction: column;
   border-left: 3px solid #DEB841;
   border-top: 3px solid #DEB841;
-}/*CHANGE ADDRESS ON RESUME --> NOOP*/
+}
 .chat-msg {
   font-size: 6rem;
   width: 19rem;
@@ -284,13 +296,23 @@
   color: #474985;
 
 }
-.phone-number {
+#contact-phone-number {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 2rem;
 }
 #contact img {
   width: 2rem;
+}
+#contact-email {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+#contact-linkedin {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
 }
 .aligned-center {
   text-align: center;
@@ -300,66 +322,22 @@
   justify-content: space-between;
 }
 .chat-right {
-  padding: 4rem 0 0 0;
+  width: 19rem;
+  padding: 4rem 1rem 0 0;
   border-right: 3px solid #DEB841;
   border-bottom: 3px solid #DEB841;
 }
-.mc-field-group {
-  padding: .2rem .3rem;
-}
-input[type="email"] {
-  padding: 1rem .5rem .6rem;
-  border: 1px solid #474985;
-  border-radius: 4px;
-  width: 100%;
-}
-input[type="text"] {
-  padding: 1rem .5rem .6rem;
-  border: 1px solid #474985;
-  border-radius: 4px;
-  width: 100%
-}
-::placeholder {
-  font-size: 1.4rem;
-}
-
-
-input[type="textarea"] {
-  width: 100%;
-  padding: 1rem .5rem .6rem;
-  border: 1px solid #474985;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  background-color: #474985;
-  color: white;
-  padding: 12px 20px;
-  margin: .2rem .3rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 5rem;
-  background-color: #474985;
-  font-size:2rem;
-  color: white;
-}
-
 svg {
   display: block;
   width: 100%;
   height: 5rem;
   fill: #474985;
-
 }
-
+#farewell {
+  background-color: #474985;
+  text-align: center;
+  color: white;
+}
 @media screen and (max-width: 1250px) {
   #palio-logo {
     height: 5rem;

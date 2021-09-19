@@ -24,7 +24,7 @@
         <div class="bio-wrapper">
             <img src="images/bio-headshot.jpeg" alt= "headshot in bio section">
             <div class= "intro-thanks text-blue">
-                <h1 id="exclaim-the-name">Hi! I'm Chris</h1>
+                <h1 id="exclaim-the-name">Hi <span class="guest-name">Sam</span>! I'm Chris</h1>
                 <p class="small-text">Thanks for checking out my page!</p>
                 <p id="show_on_desktop" class="small-text">Get your money's worth, mobile starts at 650px</p>
                 <p>Current browser width: <span id="browser-width"></span>px</p>
@@ -50,7 +50,8 @@
             <img src="images/alt-bio-headshot.jpeg" alt= "headshot in bio section">
             <div class= "intro-thanks text-blue">
                 <h1 id="exclaim-the-name">That's better!</h1>
-                <p class="small-text">Felt a little too professionel, choose a Menu option to get to know me better</p>
+                <p class="small-text">Felt a little too professional there <span class="guest-name">Sam</span>, seeing as
+                 we're on a first name basis--choose a Menu option to get to know me better</p>
             </div>
         </div>
     </div>
@@ -89,38 +90,41 @@
         <div class="all-projects-wrapper">
             <div class="project-wrapper">
                 <div class="project-left">
-                    <h1 class="text-blue">Project-grow website</h1>
+                    <h1>Project-grow website</h1>
                     <p class="project-spacing">Project Grow is a local Community Gardening organization, who we partnered with
                     to create a brand-new website that would meet all of their needs. The site is written in HTML, CSS, JS, and PHP, which lets
                     us use the WordPress customization options to allow for easily customizable layouts. Pages include templated layouts
                     that can be added or removed to accomodate the seasonal services they offer, as well as the rotating classes and events.
                     </p>
-                    <p>Our team of 5 developers created this website in a semester as our project. Pages were either designated to a single person
+                    <p>Our team of 5 developers created this website in a semester as our club project. Pages were either designated to a single person
                     or were given to groups of two, which created a sense of teamwork and experience working on projects in small groups.
                     We had regular code reviews to ensure timelines were met, and clean code was added to the repos.
                     </p>
                 </div>
-                <img src="images/grow-logo.png" id="grow-logo">
+                <div class="project-img-wrap">
+                    <img src="images/grow-logo.png" id="grow-logo">
+                </div>
             </div>
             <div class="project-wrapper">
                 <div class="project-left">
                     <h1 class="text-blue">Sudoku</h1>
-                    <p class="project-spacing">This program solves pre-generated boards on the fly and allows 
-                    playing Sudoku at the command line. Functionality includes playing 4 different difficulties, giving hints,
-                    ability to undo moves, see which numbers remain in each row, as well as see statistics about your game play. Future goals include
-                    creating a server which would allow statistics to persist across games, as well as a website which could host the game to create 
-                    a more customizable layout than is offered at the command line.
+                    <p class="project-spacing">Now this one, <span class="guest-name">Sam</span> , is a little more personal. This program solves pre-generated 
+                    boards on the fly and allows playing Sudoku at the command line. Functionality includes playing 4 different difficulties, giving hints,
+                    ability to undo moves, see which numbers remain in each row, as well as see statistics about your game play. Being a full screenshot of
+                    my commputer, this image can be hard to see on smaller devices, please click <a href="images/sudoku.png">here</a> for a better look.
                     </p>
                     <p>This was created as a gift for my girlfriend. It is written in python and was developed to be as user-friendly as possible.
                     This included many error-handling measures to ensure that she could easily undo anything she did, and provide an easy to use
                     interface even when she is unfamilar with using a terminal.
                     </p>
                 </div>
-                <img src="images/sudoku.png">
+                <div class="project-img-wrap">
+                    <img src="images/sudoku.png">
+                </div>
             </div>
             <div class="project-wrapper">
                 <div class="project-left">
-                    <h1 class="text-blue">Chrome Extension</h1>
+                    <h1>Chrome Extension</h1>
                     <p class="project-spacing">As a senior project, myself and a team of 3 others built a chrome extension.
                     The class focused on human centered design, and projects had to include a "Not You" component, meaning the project had 
                     to have end users who differ significantly from us as the developers. We chose to create a time management tool for individuals
@@ -130,11 +134,35 @@
                     interviewing mock users ith a prototyped product, building, testing, the works. We whiteboarded ideas, features, flex-goals, and ultimately, a clean UI to
                     produce an extension with good UX. 
                     </p>
-                    <p>This project was written in HTML, CSS, and primarily JavaScript. I gained experience creating chrome extensions, and 
+                    <p>This project was written in HTML, CSS, and primarily JavaScript. (Which if you couldn't tell, <span class="guest-name">Sam</span> I snuck a little
+                    JS into this portfolio as well!) I gained experience creating chrome extensions, and 
                     working with various APIs. I have improved my ability to work in a team, as well as how to design for users who differ from myself.
                     </p>
                 </div>
-                <img src="images/chrome_extension.png">
+                <div class="project-img-wrap">
+                    <img src="images/chrome_extension.png">
+                </div>
+            </div>
+            <div class="project-wrapper">
+                <div class="project-left">
+                    <h1 class="text-blue">Pantry Tracker (In Progress)</h1>
+                    <p class="project-spacing">Well <span class="guest-name">Sam</span> this brings us up to the present! After graduating, I decided I wanted to 
+                        continue to learn new languages and take on new challenges to keep myself fresh. My current personal project is an iOS app that allows you 
+                        to keep track of food in your pantry, fridge, cubbords, etc.
+                    </p>
+                    <p>Users can either take a picture of an individual item's barcode, or, take a picture of their whole receipt and the app will detect the UPC codes
+                        printed next to each item, using iOS's Vision and Tesseract. These barcodes are then sent to a barcode API, nutrionix, which returns the products
+                        name and image. This information is then used to create customized lists of the users fridge, pantry, etc. Items can be easily added to shopping list 
+                        and viewed while away from home as a reminder of what to pick up from the store.
+                    </p>
+                    <p class="project-spacing">This project is written in swift, and marks my first experience with the language, with only a udemy tutorial to learn the syntax and xcode basics. A special
+                        thanks goes to my girlfriend for letting me use her Mac because running xcode in a virtual mac was simply painful and I never would have even gotten the project
+                        created before it crashed.
+                    </p>
+                </div>
+                <div class="project-img-wrap">
+                    <img src="images/grow-logo.png">
+                </div>
             </div>
         </div>
 
@@ -151,11 +179,11 @@
                 </div>
                 <div class="exp-text-padding exp-white-divider">
                     <h1>Void Tech Consulting</h1>
-                    <h2>2020-current</h2>
+                    <h2>2020-2021</h2>
                     <p>Went through a four week camp to learn properties and good coding style of HTML and CSS, along
                     with an introduction to JavaScript. This portfolio was actually created as a test of the skills we had 
                     just learned. In small groups, portfolios were designed and created, and underwent weekly code review.
-                    Now, a team of four other developers have a semester project, details of which are in the projects section. 
+                    This is the organization in which I helped develop the website for Project Grow.
                     </p>
                 </div>
             </div>
@@ -200,55 +228,31 @@
                 <div class="chat-msg">
                     <p class="chat-text">I'd love to chat!</p>
                 </div>
-                <div class="phone-number">
+            </div>
+            <div class="chat-right">
+                <div id="contact-phone-number">
                     <img src="images/phone.png" alt="phone">
                     <p class="text-blue aligned-center">734 660 1775</p>
                 </div>
-            </div>
-            <div class="chat-right">
-
-                <!-- Begin Mailchimp Signup Form -->
-                <div id="mc_embed_signup">
-                    <form action="https://gmail.us2.list-manage.com/subscribe/post?u=da2db6f80f0d16057e87dd9fa&amp;id=73a4f33de9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <div id="mc_embed_signup_scroll">
-                            <div class="top-form-row">
-                                <div class="mc-field-group">
-                                    <label for="mce-EMAIL"></label>
-                                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email">
-                                </div>
-                                <div class="mc-field-group">
-                                    <label for="mce-FNAME"></label>
-                                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="bottom-form-row">
-                                <div class="mc-field-group">
-                                    <label for="mce-MMERGE2"></label>
-                                    <input type="textarea" value="" name="MMERGE2" class="required" id="mce-MMERGE2" placeholder="Your message">
-                                </div>
-                            </div>
-                            <div id="mce-responses" class="clear">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
-                            </div>    
-                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_da2db6f80f0d16057e87dd9fa_73a4f33de9" tabindex="-1" value=""></div>
-                            <div class="clear aligned-center"><input type="submit" value="Submit" name="submit" id="mc-embedded-subscribe" class="button"></div>
-                        </div>
-                    </form>
+                <div id="contact-email">
+                    <img src="images/email.png" alt="email">
+                    <a href="mailto:clcooley@umich.edu">clcooley@umich.edu</a>
                 </div>
-                <!--End mc_embed_signup-->
-
+                <div id="contact-linkedin">
+                    <img src="images/linkedin.png" alt="linkedin">
+                    <a href="https://google.com">LinkedIn profile</a>
+                </div>
             </div>
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
         <polygon points="100,0 100,10 0,10" />
-      </svg>
-    <div class="footer">
-        <p>Email me at <a class="text-white" href="mailto:clcooley@umich.edu">clcooley@umich.edu</a></p>
+    </svg>
+    <div>
+        <h5 id="farewell">Thanks for scrolling all the way through my portfolio, <span class="guest-name">Sam</span>!</h5>
     </div>
 </body>
 <script src="nav.js"></script>
-<script src="broswer_width.js"></script>
+<script src="browser_width.js"></script>
+<script src="name_changer.js"></script>
 </html>
