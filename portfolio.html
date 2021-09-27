@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="portfolio.css">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/reset.css">
 </head>
 <body>
     <nav class="nav-bar">
-        <div class="left name-in-hdr">Christopher Cooley</div>
+        <div id="name-in-hdr">Christopher Cooley</div>
         <ul>
             <li><a href="#about-me" class="header-icon">About</a></li>
             <li><a href="#projects" class="header-icon">Projects</a></li>
@@ -18,37 +18,23 @@
             <li><a href="ChristopherCooleyResume.pdf" class="header-icon resume">Resume</a></li>
         </ul>
         <!--mobile version only-->
-        <button onclick="hidePic()" class="hamburger">MENU</button>
+        <button onclick="hidePic()" class="hamburger background-yellow">MENU</button>
     </nav>
     <div id="greeting">
-        <div class="bio-wrapper">
+        <div id="bio-wrapper">
             <img src="images/bio-headshot.jpeg" alt= "headshot in bio section">
-            <div class= "intro-thanks text-blue">
+            <div class= "text-blue">
                 <h1 id="exclaim-the-name">Hi <span class="guest-name">Sam</span>! I'm Chris</h1>
-                <p class="small-text">Thanks for checking out my page!</p>
-                <p id="show_on_desktop" class="small-text">Get your money's worth, mobile starts at 650px</p>
-                <p>Current browser width: <span id="browser-width"></span>px</p>
-                
-                <script>
-                    window.onload = function() {
-                        document.getElementById("browser-width").innerHTML = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-                    }
-                    window.onresize = function() {
-                        document.getElementById("browser-width").innerHTML = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-                        //Don't tell people to try the mobile if already on mobile
-                        if (window.screen.width < 650) {
-                            document.getElementById("show_on_desktop").innerHTML = "Open the menu to view options!";
-                        }
-                    }
-                </script>
+                <a id="toTimeline" class="background-yellow text-blue aligned-center" href="https://clcooley10.github.io/timeline.html">View my timeline!</a>
+                <a id="toTimeline" class="background-yellow text-blue aligned-center" href="file:///C:/Users/chris/Desktop/VOID/clcooley10.github.io/timeline.html">TEST WITH THIS ONE</a>
             </div>
         </div>
     </div>
     <!--Change layout if the menu is open-->
     <div id="alt-greeting">
-        <div class="alt-bio-wrapper">
+        <div id="alt-bio-wrapper">
             <img src="images/alt-bio-headshot.jpeg" alt= "headshot in bio section">
-            <div class= "intro-thanks text-blue">
+            <div class= "text-blue">
                 <h1 id="exclaim-the-name">That's better!</h1>
                 <p class="small-text">Felt a little too professional there <span class="guest-name">Sam</span>, seeing as
                  we're on a first name basis--choose a Menu option to get to know me better</p>
@@ -60,24 +46,24 @@
       </svg>
     <div id="about-me" class="background-blue">
         <h1 class= "text-white titles">About me</h1>
-        <div class= "bio-description">
+        <div id="bio-description" class="aligned-center">
             <p class="text-white small-text">I am a recent graduate from the University of Michigan with a major in Computer
                 Science and a minor in French Language and Studies. I am looking forward to my first professional experience somewhere
                 where I can put my classes to use, as well as learn even more. I have taken an amalgum of different classes at UofM but 
                 my biggest interests right now are human centered software design and interactive, intuitive website design.
             </p>
             <div class="languages-pics">
-                <div class="cpp flex-dir-col">
+                <div id="cpp" class="flex-dir-col">
                     <img src="images/c++logo.svg" alt="c++ logo">
-                    <p class="lang-names">c/c++</p>
+                    <p class="lang-names text-white">c/c++</p>
                 </div>
-                <div class="html flex-dir-col">
+                <div id="html" class="flex-dir-col">
                     <img src="images/htmlcssLogo.svg" alt="html logo">
-                    <p class="lang-names make-level">html/css/JS</p>
+                    <p class="lang-names text-white make-level">html/css/JS</p>
                 </div>
-                <div class="python flex-dir-col">
+                <div id="python" class="flex-dir-col">
                     <img src="images/pythonLogoBW.svg" alt="python logo">
-                    <p class="lang-names make-level">python</p>
+                    <p class="lang-names text-white make-level">python</p>
                 </div>
             </div>
         </div>
@@ -248,8 +234,10 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
         <polygon points="100,0 100,10 0,10" />
     </svg>
-    <div>
-        <h4 id="farewell">Thanks for scrolling all the way through my portfolio, <span class="guest-name">Sam</span>!</h4>
+    <div class="background-blue text-white aligned-center">
+        <h3>Thanks for scrolling all the way through my portfolio, <span class="guest-name">Sam</span>!</h3>
+        <h4>Let's go again! Mobile view starts at 650px</h4>
+        <p>Current browser width: <span id="browser-width"></span>px</p>
     </div>
 </body>
 <script src="portfolio.js"></script>

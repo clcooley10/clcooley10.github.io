@@ -1,0 +1,65 @@
+/*Fonts & colors*/
+@font-face {
+  font-family: mulish;
+  src: url(Mulish-Medium.ttf) 
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-bottom: 5px solid #474985;
+}
+.nav-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+}
+#name-in-hdr {
+  padding-left: 5rem;
+  color: #474985;
+  background-color: white;
+  font-size: 2.5rem;
+}
+.header-icon {
+  background-color: white;
+  color: #474985;
+  border: 3px solid #DEB841;
+  cursor: pointer;
+  text-decoration: none;
+  padding: .2rem;
+  margin: 1rem;
+}
+.header-icon:hover {
+  background-color: #DEB841;
+  color: white;
+}
+.resume {
+  border: 3px solid  #474985;
+  border-radius: 8px;
+  
+}
+.resume:hover {
+  background-color: #474985;
+}
+
+/*Mobile Nav-bar*/
+.hamburger {
+  display: none;
+  padding: .8rem;
+  margin: .3rem;
+}
+
+#timeline {
+  padding-top: 6rem;
+}
