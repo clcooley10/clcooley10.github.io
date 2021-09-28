@@ -1,8 +1,5 @@
 /*Fonts & colors*/
-@font-face {
-  font-family: mulish;
-  src: url(Mulish-Medium.ttf) 
-}
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi&display=swap');
 .nav-bar {
   position: fixed;
   top: 0;
@@ -59,7 +56,41 @@
   padding: .8rem;
   margin: .3rem;
 }
-
+/* This is a wrapper for the whole timeline*/
 #timeline {
-  padding-top: 6rem;
+  padding: 6rem 0;
+  margin: 0 auto;
+  top: 4rem;
+}
+/* Wrapper for indv post */
+.entry {
+  padding: 2rem 1rem;
+  position: relative;
+  width: 40%;
+}
+.left {
+left: 5%;
+background-color: #474985;
+color: white;
+}
+.right {
+  left: 55%;
+  background-color: #DEB841;
+  color: white;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Yaldevi', sans-serif;
+  font-size: 2rem;
+  border-bottom: 2px solid white;
+  margin-bottom: .5rem;
+}
+.body {
+  font-size: 1.5rem;
+}
+.svg {
+  display: block;
+  width: 100%;
+  height: 20rem;
 }

@@ -1,9 +1,4 @@
 /*Fonts & colors*/
-@font-face {
-  font-family: mulish;
-  src: url(Mulish-Medium.ttf) 
-}
-
 .background-blue {
   background-color: #474985;
 } 

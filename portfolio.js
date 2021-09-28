@@ -4,37 +4,45 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-bar ul');
 const navLinks = document.querySelectorAll('.nav-bar a');
 
-// On initial page load, ask guest to enter name, and prep to show their screen size
-window.onload = function() {
-    let guestName = prompt("Please enter your name, leave blank for pseudonym Sam", "Sam");
+// On initial page load
+window.addEventListener('load', pageLoad);
+
+function pageLoad() {
+  // Ask guest to enter name
+  let guestName = prompt("Please enter your name, leave blank for pseudonym Sam", "Sam");
     if (guestName[0] === '<' || guestName[0] === '&') {
-        alert("Why yes I did barely sanitize this input! I'll just call you hacker.");
-        guestName = "hacker";
+      alert("Why yes I did barely sanitize this input! I'll just call you hacker.");
+      guestName = "hacker";
     }
     else if (guestName === "") {
-        guestName = "Sam";
+      guestName = "Sam";
     }
-    var i = 0, len = insertNameHere.length;
-    while (i < len) {
-        insertNameHere[i].innerHTML = guestName;
-        i++;
-    }
-    let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-    to_fill.innerHTML = width;
+  var i = 0, len = insertNameHere.length;
+  while (i < len) {
+    insertNameHere[i].innerHTML = guestName;
+    i++;
+  }
+  // Prep to show their screen size
+  let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  to_fill.innerHTML = width;
 }
 
-// When the page is resized, update the display of the current window size, as well as update the message to them
-window.onresize = function() {
-    let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-    to_fill.innerHTML = width;
+// When the page is resized
+window.addEventListener('resize', pageResize);
 
-    //Don't tell people to try the mobile if already on mobile
-    if (window.screen.width < 650) {
-        document.getElementById("show_on_desktop").innerHTML = "Open the menu to view options!";
-    } else {
-        document.getElementById("show_on_desktop").innerHTML = "Get your money's worth, mobile starts at 650px";
-    }
+function pageResize() {
+  // Update the display of the current window size
+  let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  to_fill.innerHTML = width;
+
+  // Don't tell people to try the mobile if already on mobile
+  if (window.screen.width < 650) {
+    document.getElementById("show_on_desktop").innerHTML = "Open the menu to view options!";
+  } else {
+    document.getElementById("show_on_desktop").innerHTML = "Get your money's worth, mobile starts at 650px";
+  }
 }
+
 // These functions handle updating the nav bar menu display
 allEventListners();
 
