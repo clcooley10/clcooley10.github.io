@@ -10,7 +10,10 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <div id="name-in-hdr">Chris's Timeline</div>
+        <div id="name-in-hdr">
+            <input type="image" id="back-btn" src="images/back.png" name="back-button">
+            <p>Chris's Timeline</p>
+        </div>
         <ul>
             <li><a href="#timeline" class="header-icon">Timeline</a></li>
             <li><a href="#contact" class="header-icon">Contact</a></li>
@@ -21,6 +24,20 @@
     </nav>
     <!-- Start timeline-->
     <div id="timeline">
+        <div id="intro">
+            <p>This page just exists to tell you a little bit about myself, as well as what I've been up to 
+                the last few years. It was also a chance for me to learn and implement some neat JS to make the timeline.
+                I hope you can tell that I have fun doing this.
+            </p>
+        </div>
+        <svg class="svg">
+            <defs>
+                <linearGradient id="yellow-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color: #DEB841;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#474985;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+        </svg>
         <div class="entry left">
             <div class="header">
                 <p class="title">High School Graduation</p>
@@ -152,6 +169,35 @@
                     This is my first app, written in Swift which I am learning as I go. My future plans include creating
                     another web site to further demonstrate both my UX and programming skills.
                 </p>
+            </div>
+        </div>
+    </div>
+    <svg class="svg">
+        <defs>
+            <linearGradient id="yellow-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color: #DEB841;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#474985;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <div id="contact">
+        <div class="contact-wrapper">
+            <div class="chat-msg">
+                <p class="chat-text">I'd love to chat!</p>
+            </div>
+            <div class="chat-right">
+                <div class="contact-methods" id="contact-phone-number">
+                    <img src="images/phone.png" alt="phone">
+                    <p class="text-blue aligned-center">734 660 1775</p>
+                </div>
+                <div class="contact-methods" id="contact-email">
+                    <img src="images/email.png" alt="email">
+                    <a href="mailto:clcooley@umich.edu">clcooley@umich.edu</a>
+                </div>
+                <div class="contact-methods" id="contact-linkedin">
+                    <img src="images/linkedin.png" alt="linkedin">
+                    <a href="https://linkedin.com/in/christopher-cooley-profile">LinkedIn profile</a>
+                </div>
             </div>
         </div>
     </div>

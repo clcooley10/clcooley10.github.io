@@ -3,6 +3,7 @@
 .nav-bar {
   position: fixed;
   top: 0;
+  z-index: 1;
   overflow: hidden;
   width: 100%;
   height: 4rem;
@@ -22,7 +23,12 @@
   justify-content: flex-end;
   font-size: 1.5rem;
 }
+#back-btn {
+  height: 2rem;
+  align-self: center;
+}
 #name-in-hdr {
+  display: flex;
   padding-left: 5rem;
   color: #474985;
   background-color: white;
@@ -58,9 +64,19 @@
 }
 /* This is a wrapper for the whole timeline*/
 #timeline {
-  padding: 6rem 0;
+  padding: 6rem 0 0 0;
   margin: 0 auto;
   top: 4rem;
+}
+#intro {
+  position: relative;
+  left: 5%;
+  max-width: 90%;
+  border: 10px solid #DEB841;
+  color: #474985;
+  font-size: 1.5rem;
+  font-family: 'Yaldevi', sans-serif;
+  background-color: #DEB841;
 }
 /* Wrapper for indv post */
 .entry {
@@ -93,4 +109,114 @@ color: white;
   display: block;
   width: 100%;
   height: 20rem;
+}
+/*Start contact info*/
+#contact {
+  margin: auto;
+}
+.contact-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  left: 5%;
+  max-width: 90%;
+  margin: 0 0 5rem 0;
+  border: 10px solid #474985;
+}
+.chat-left {
+  display: flex;
+  flex-direction: column;
+}
+.chat-msg {
+  font-size: 6rem;
+  width: 19rem;
+  text-align: center;
+  color:#474985;
+}
+.contact-methods {
+  display: flex;
+  justify-content: space-between;
+}
+#contact-phone-number {
+  font-size: 2rem;
+}
+#contact img {
+  width: 2rem;
+}
+#contact-email {
+  font-size: 1.5rem;
+}
+#contact-linkedin {
+  font-size: 1.5rem;
+}
+.aligned-center {
+  text-align: center;
+}
+.top-form-row {
+  display: flex;
+  justify-content: space-between;
+}
+.chat-right {
+  width: 19rem;
+  padding: 4rem 1rem 0 0;
+}
+@media screen and (max-width: 750px) {
+  #name-in-hdr {
+    font-size: 1.8rem;
+  }
+  /* Change to a standard view */
+  .left {
+    left: 0%;
+  }
+  .right {
+    left: 0%;
+  }
+  .entry {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 650px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+  .chat-msg {
+    width: unset;
+  }
+  .chat-right {
+    width: unset;
+    padding: unset;
+  }
+  /* navbar css for mobile start */
+  .hamburger{
+    display: block;
+  }
+  .nav-bar {
+    height: 60px;
+    overflow: visible;
+  }
+  .nav-bar ul {
+    position: absolute;
+    width: 100%;
+    height: 290px; 
+    left: 0;
+    top: 80px;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s;
+  }
+  .nav-bar ul li {
+    width: 100%;
+    padding: 2rem 0;
+    text-align: end;
+  }
+  .nav-bar ul li a {
+    padding: 15px;
+  }
+  .nav-bar ul.open {
+    max-height: 63vh;
+    overflow: visible;
+  }
+  /* navbar css for mobile end */
 }

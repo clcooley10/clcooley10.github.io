@@ -3,13 +3,16 @@ let to_fill = document.getElementById("browser-width");
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-bar ul');
 const navLinks = document.querySelectorAll('.nav-bar a');
+let name = "";
 
 // On initial page load
 window.addEventListener('load', pageLoad);
 
 function pageLoad() {
-  // Ask guest to enter name
-  let guestName = prompt("Please enter your name, leave blank for pseudonym Sam", "Sam");
+  // Ask guest to enter name, if they have not done so before
+  let guestName = "";
+  if (localStorage.getItem("name") === null) {
+    guestName = prompt("Please enter your name, leave blank for pseudonym Sam", "Sam");
     if (guestName[0] === '<' || guestName[0] === '&') {
       alert("Why yes I did barely sanitize this input! I'll just call you hacker.");
       guestName = "hacker";
@@ -17,6 +20,10 @@ function pageLoad() {
     else if (guestName === "") {
       guestName = "Sam";
     }
+    localStorage.setItem("name", guestName);
+  } else {
+    guestName = localStorage.getItem("name");
+  }
   var i = 0, len = insertNameHere.length;
   while (i < len) {
     insertNameHere[i].innerHTML = guestName;
