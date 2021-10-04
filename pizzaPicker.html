@@ -66,13 +66,13 @@
                 <!-- Choose an icon -->
                 <fieldset id="icon-field">
                     <legend>Choose an icon:</legend>
-                    <input type="radio" name="icon" id="black-jaguar" name="black-jaguar" required>
+                    <input type="radio" name="icon" id="black-jaguar" value="black-jaguar" required>
                     <label for="black-jaguar" id="jag-icon"></label>
                     <input type="radio" name="icon" id="bug" value="bug">
                     <label for="bug" id="bug-icon"></label>
                     <input type="radio" name="icon" id="bull" value="bull">
                     <label for="bull" id="bull-icon"></label>
-                    <input type="radio" name="icon" id="butterfly" name="butterfly">
+                    <input type="radio" name="icon" id="butterfly" value="butterfly">
                     <label for="butterfly" id="butterfly-icon"></label>
                     <input type="radio" name="icon" id="camel" value="camel">
                     <label for="camel" id="camel-icon"></label>
@@ -80,7 +80,7 @@
                     <label for="cat" id="cat-icon"></label>
                     <input type="radio" name="icon" id="crab" value="crab">
                     <label for="crab" id="crab-icon"></label>
-                    <input type="radio" name="icon" id="dinosaur-egg" name="dinosaur-egg">
+                    <input type="radio" name="icon" id="dinosaur-egg" value="dinosaur-egg">
                     <label for="dinosaur-egg" id="dinosaur-icon"></label>
                     <input type="radio" name="icon" id="dog" value="dog">
                     <label for="dog" id="dog-icon"></label>
@@ -115,10 +115,10 @@
                 <fieldset id="display-toppings">
                     <!-- Dynamically pulled from JSON file -->
                     <legend>Choose the topping(s) on your slices</legend>
-                    <fieldset id="display-meats">
+                    <fieldset class="toppings-flex" id="display-meats">
                         <legend>Meats:</legend>
                     </fieldset>
-                    <fieldset id="display-nonMeats">
+                    <fieldset class="toppings-flex" id="display-nonMeats">
                         <legend>Non-Meats:</legend>
                     </fieldset>
                 </fieldset>

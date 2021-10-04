@@ -1,9 +1,6 @@
-var redGreen = false,
-    users = null;
 // On page load, init vars stored in local storage
 $(function() {
-    redGreen = localStorage.getItem("redGreen");
-    users = localStorage.getItem("userCards");
+    var redGreen = localStorage.getItem("redGreen");
     if(redGreen === "true") {
         $("#hamburger a").css("color", "#F6F4D3");
     }
@@ -58,18 +55,24 @@ function displayToppings() {
         let nonMeats = data["master-toppings"]["non-meats"];
         let i = 0, numMeats = meats.length;
         while(i < numMeats) {
+            var wrapper = document.createElement("div");
+            $(wrapper).addClass("force-wrap");
             let input = "<input type='checkbox' id='" + meats[i] + "' name='topping' value='" + meats[i] + "'>";
             let label = "<label for='" + meats[i] + "'>" + meats[i] + "</label>";
-            $('#display-meats').append(input);
-            $('#display-meats').append(label);
+            $(wrapper).append(input);
+            $(wrapper).append(label);
+            $('#display-meats').append(wrapper);
             i++;
         }
         let j = 0; numNonMeats = nonMeats.length;
         while(j < numNonMeats) {
+            var wrapper = document.createElement("div");
+            $(wrapper).addClass("force-wrap");
             let input = "<input type='checkbox' id='" + nonMeats[j] + "' name='topping' value='" + nonMeats[j] + "'>";
             let label = "<label for='" + nonMeats[j] + "'>" + nonMeats[j] + "</label>";
-            $('#display-nonMeats').append(input);
-            $('#display-nonMeats').append(label);
+            $(wrapper).append(input);
+            $(wrapper).append(label);
+            $('#display-nonMeats').append(wrapper);
             j++;
         }
     });
@@ -77,9 +80,26 @@ function displayToppings() {
 // Handle Create New User form submission
 $('#create-user-form').submit(function(event) {
     event.preventDefault();
-    var formData = $(this).serialize();
-    formData = formData.split('&');
-    console.log(formData);
+    var formData = $(this).serializeArray();
+    console.log("formdata:", formData);
+    let i = 0; formLength = formData.length;
+    let parsedData = {};
+    while(i < formLength) {
+        let key = formData[i]["name"];
+        if (key !== "topping") {
+            parsedData[key] = formData[i]["value"];
+        } else {
+
+        }
+        i++;
+    }
+    console.log("parsed", parsedData);
+    let user = {};
+    let icon = formData[""]
+    let users = localStorage.getItem("userCards");
+    if (users !== null) {
+        
+    }
 
 });
 // Update Settings

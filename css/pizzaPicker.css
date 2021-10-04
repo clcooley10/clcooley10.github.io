@@ -135,6 +135,13 @@ html, body {
     border-radius: 16px;
     padding: 1rem;
 }
+.toppings-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.force-wrap {
+    flex-basis: 33%;
+}
 
 /* This section is the icons */
 #jag-icon {
