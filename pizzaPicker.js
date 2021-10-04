@@ -48,8 +48,40 @@ $('a.nav').click(function() {
 $("#new-user-card").click(function() {
     $('div.page.show').toggleClass("show hide");
     $('#create-users-content').toggleClass("show hide");
+    displayToppings();
 });
 
+// Display all pizza toppings to choose from
+function displayToppings() {
+    $.getJSON("https://clcooley10.github.io/pizzaData.json", function(data) {
+        let meats = data["master-toppings"]["meats"];
+        let nonMeats = data["master-toppings"]["non-meats"];
+        let i = 0, numMeats = meats.length;
+        while(i < numMeats) {
+            let input = "<input type='checkbox' id='" + meats[i] + "' name='topping' value='" + meats[i] + "'>";
+            let label = "<label for='" + meats[i] + "'>" + meats[i] + "</label>";
+            $('#display-meats').append(input);
+            $('#display-meats').append(label);
+            i++;
+        }
+        let j = 0; numNonMeats = nonMeats.length;
+        while(j < numNonMeats) {
+            let input = "<input type='checkbox' id='" + nonMeats[j] + "' name='topping' value='" + nonMeats[j] + "'>";
+            let label = "<label for='" + nonMeats[j] + "'>" + nonMeats[j] + "</label>";
+            $('#display-nonMeats').append(input);
+            $('#display-nonMeats').append(label);
+            j++;
+        }
+    });
+}
+// Handle Create New User form submission
+$('#create-user-form').submit(function(event) {
+    event.preventDefault();
+    var formData = $(this).serialize();
+    formData = formData.split('&');
+    console.log(formData);
+
+});
 // Update Settings
 $("#settingsForm").submit(function(event) {
     event.preventDefault();

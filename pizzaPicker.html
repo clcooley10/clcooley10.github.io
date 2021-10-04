@@ -62,59 +62,65 @@
         <!-- Create User page -->
         <div id="create-users-content" class="page hide">
             <h1 id="create-user-header">Create New User</h1>
-            <form id="create-user-form" target="/null" method="GET">
+            <form id="create-user-form" target="null" method="GET">
                 <!-- Choose an icon -->
                 <fieldset id="icon-field">
                     <legend>Choose an icon:</legend>
-                    <input type="radio" id="black-jaguar" name="black-jaguar">
+                    <input type="radio" name="icon" id="black-jaguar" name="black-jaguar" required>
                     <label for="black-jaguar" id="jag-icon"></label>
-                    <input type="radio" id="bug" name="bug">
+                    <input type="radio" name="icon" id="bug" value="bug">
                     <label for="bug" id="bug-icon"></label>
-                    <input type="radio" id="bull" name="bull">
+                    <input type="radio" name="icon" id="bull" value="bull">
                     <label for="bull" id="bull-icon"></label>
-                    <input type="radio" id="butterfly" name="butterfly">
+                    <input type="radio" name="icon" id="butterfly" name="butterfly">
                     <label for="butterfly" id="butterfly-icon"></label>
-                    <input type="radio" id="camel" name="camel">
+                    <input type="radio" name="icon" id="camel" value="camel">
                     <label for="camel" id="camel-icon"></label>
-                    <input type="radio" id="cat" name="cat">
+                    <input type="radio" name="icon" id="cat" value="cat">
                     <label for="cat" id="cat-icon"></label>
-                    <input type="radio" id="crab" name="crab">
+                    <input type="radio" name="icon" id="crab" value="crab">
                     <label for="crab" id="crab-icon"></label>
-                    <input type="radio" id="dinosaur-egg" name="dinosaur-egg">
+                    <input type="radio" name="icon" id="dinosaur-egg" name="dinosaur-egg">
                     <label for="dinosaur-egg" id="dinosaur-icon"></label>
-                    <input type="radio" id="dog" name="dog">
+                    <input type="radio" name="icon" id="dog" value="dog">
                     <label for="dog" id="dog-icon"></label>
-                    <input type="radio" id="duck" name="flying-duck">
+                    <input type="radio" name="icon" id="duck" value="flying-duck">
                     <label for="duck" id="duck-icon"></label>
-                    <input type="radio" id="fox" name="fox">
+                    <input type="radio" name="icon" id="fox" value="fox">
                     <label for="fox" id="fox-icon"></label>
-                    <input type="radio" id="panda" name="kiss-panda">
+                    <input type="radio" name="icon" id="panda" value="kiss-panda">
                     <label for="panda" id="panda-icon"></label>
-                    <input type="radio" id="orca" name="orca">
+                    <input type="radio" name="icon" id="orca" value="orca">
                     <label for="orca" id="orca-icon"></label>
-                    <input type="radio" id="pelican" name="pelican">
+                    <input type="radio" name="icon" id="pelican" value="pelican">
                     <label for="pelican" id="pelican-icon"></label>
-                    <input type="radio" id="perch" name="perch">
+                    <input type="radio" name="icon" id="perch" value="perch">
                     <label for="perch" id="perch-icon"></label>
-                    <input type="radio" id="platypus" name="platypus">
+                    <input type="radio" name="icon" id="platypus" value="platypus">
                     <label for="platypus" id="platypus-icon"></label>
-                    <input type="radio" id="seagull" name="seagull">
+                    <input type="radio" name="icon" id="seagull" value="seagull">
                     <label for="seagull" id="seagull-icon"></label>
-                    <input type="radio" id="shark" name="shark">
+                    <input type="radio" name="icon" id="shark" value="shark">
                     <label for="shark" id="shark-icon"></label>
-                    <input type="radio" id="walrus" name="walrus">
+                    <input type="radio" name="icon" id="walrus" value="walrus">
                     <label for="walrus" id="walrus-icon"></label>
-                    <input type="radio" id="woodpecker" name="woodpecker">
+                    <input type="radio" name="icon" id="woodpecker" value="woodpecker">
                     <label for="woodpecker" id="woodpecker-icon"></label>
                 </fieldset><br><br>
                 <label for="user-name">Name:</label>
-                <input type="text" name="user-name" id="user-name"><br><br>
+                <input type="text" name="user-name" id="user-name" required><br><br>
                 <label for="user-appetite">#Slices desired:</label>
-                <input type="number" name="user-appetite" id="user-appetite">
+                <input type="number" name="user-appetite" id="user-appetite" required>
                 <label id="appetite-msg"for="user-appetite">(Think 12" medium pizza)</label><br><br>
                 <fieldset id="display-toppings">
                     <!-- Dynamically pulled from JSON file -->
-                    <legend>Topping(s):</legend>
+                    <legend>Choose the topping(s) on your slices</legend>
+                    <fieldset id="display-meats">
+                        <legend>Meats:</legend>
+                    </fieldset>
+                    <fieldset id="display-nonMeats">
+                        <legend>Non-Meats:</legend>
+                    </fieldset>
                 </fieldset>
                 <label for="user-fav-franchise">Favorite Franchise:</label>
                 <select id="user-fav-franchise" name="user-fav-franchise">
