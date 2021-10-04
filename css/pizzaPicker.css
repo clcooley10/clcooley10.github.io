@@ -1,0 +1,321 @@
+html, body {
+    height: 100%;
+}
+#hamburger {
+    position: fixed;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #BB3E00;
+    transition: 0.5s;
+    overflow-x: hidden;
+    padding-top: 3rem;
+}
+#hamburger:after {
+    content: "";
+    background-color: #4cbc5a;
+    position: absolute;
+    bottom: 0;
+    left: 15rem;
+    width: 0.2rem;
+    height: 100%;
+}
+#welcome {
+    transform: rotate(330deg);
+    font-size: 3rem !important;
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 2rem 0;
+    border: 3px solid #F6F4D3;
+    border-radius: 50%;;
+}
+#hamburger a {
+    text-decoration: none;
+    color: #4cbc5a;
+    font-size: 1.4rem;
+    padding: 0.75rem 1rem;
+    width: 13rem;
+    border-bottom: 2px solid #F6F4D3;
+    margin-left: 2rem;
+    text-align: right;
+}
+#hamburger a:hover {
+    color: #F6F4D3;
+}
+#changeNavDisplay {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    cursor: pointer;
+    border: none !important;
+    width: unset !important;
+    padding: unset !important;
+}
+#create-users:nth-of-type(3) {
+    border-top: 2px solid #F6F4D3;
+}
+#main-content {
+    background-color: #F6F4D3;
+    margin-left: 15rem;
+    height: 100%;
+    transition: 0.5s;
+}
+#welcome-message {
+    padding: 3rem 0;
+    text-align: center;
+    background-color: #4cbc5a;
+    border: 4px solid #BB3E00;
+    max-width: 70%;
+    margin: auto;
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+.open {
+    width: 15.2rem;
+}
+.closed {
+    width: 2rem;
+}
+.pizza-logo {
+    height: 20rem;
+    margin: auto;
+    transition: 2s;
+}
+/* Little Caesars and Cottage Inn are too big */
+.large-pizza {
+    height: 12rem;
+}
+
+/* Begin Select Users Style */
+#select-users-header {
+    text-align: center;
+    padding-top: 6rem;
+    font-size: 3rem;
+}
+.user-card {
+    background-color: white;
+    border: 2px solid black;
+    max-width: 12rem;
+    height: 16rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+#user-list {
+    margin: auto;
+    max-width: 80%;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 1rem;
+    height: 20rem;
+}
+#create-order {
+    position: relative;
+    left: 90%;
+}
+
+/* Begin Create New User Style */
+#create-users-content {
+    padding-top: 4rem;
+}
+#create-user-header {
+    text-align: center;
+    font-size: 3rem;
+}
+#create-user-form {
+    margin: auto;
+    max-width: 40%;
+    height: 24rem;
+    border: 2px solid black;
+    border-radius: 16px;
+}
+
+/* This section is the icons */
+#jag-icon {
+    background-image: url("../profile-icons/black-jaguar.png");
+}
+#bug-icon {
+    background-image: url("../profile-icons/bug.png");
+}
+#bull-icon {
+    background-image: url("../profile-icons/bull.png");
+}
+#butterfly-icon {
+    background-image: url("../profile-icons/butterfly.png");
+}
+#camel-icon {
+    background-image: url("../profile-icons/camel.png");
+}
+#cat-icon {
+    background-image: url("../profile-icons/cat.png");
+}
+#crab-icon {
+    background-image: url("../profile-icons/crab.png");
+}
+#dinosaur-icon {
+    background-image: url("../profile-icons/dinosaur-egg.png");
+}
+#dog-icon {
+    background-image: url("../profile-icons/dog.png");
+}
+#duck-icon {
+    background-image: url("../profile-icons/flying-duck.png");
+}
+#fox-icon {
+    background-image: url("../profile-icons/fox.png");
+}
+#panda-icon {
+    background-image: url("../profile-icons/kiss-panda.png");
+}
+#orca-icon {
+    background-image: url("../profile-icons/orca.png");
+}
+#pelican-icon {
+    background-image: url("../profile-icons/pelican.png");
+}
+#perch-icon {
+    background-image: url("../profile-icons/perch.png");
+}
+#platypus-icon {
+    background-image: url("../profile-icons/platypus.png");
+}
+#seagull-icon {
+    background-image: url("../profile-icons/seagull.png");
+}
+#shark-icon {
+    background-image: url("../profile-icons/shark.png");
+}
+#walrus-icon {
+    background-image: url("../profile-icons/walrus.png");
+}
+#woodpecker-icon {
+    background-image: url("../profile-icons/woodpecker.png");
+}
+#icon-field {
+    overflow: auto;
+    white-space: nowrap;
+}
+#icon-field label {
+    cursor:pointer;
+    display: inline-block;
+    width: 3.125rem;
+    height: 3.125rem;
+}
+#appetite-msg {
+    opacity: 0.8;
+}
+/* Begin View Past Orders Style */
+#view-content {
+    margin: auto;
+}
+#past-order-header {
+    font-size: 5rem;
+    text-align: center;
+}
+#view-orders-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+.order-container {
+    width: 40%;
+    height: 20rem;
+    border-radius: 16px;
+    padding: 1rem;
+}
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+}
+#orders-scroll {
+    border: 2px solid #BB3E00;
+}
+#order-highlight {
+    border: 2px solid #4cbc5a;
+}
+.order-details {
+    border: 1px solid gray;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    overflow: auto;
+}
+.icons-link {
+}
+
+/* Begin About Style */
+.displayAboutContact {
+    display: block;
+}
+.commercialUse {
+    display: none;
+}
+.content-wrapper {
+    margin: auto;
+    max-width: 70%;
+    background-color: #BB3E00;
+    color: #F6F4D3;
+    border: 4px solid #4cbc5a;  
+}
+#about-content {
+    padding: 4rem 2rem 6rem 2rem;
+}
+.about-pg {
+    padding-top: 2rem;
+}
+/* Begin Contact Style */
+#contact-content {
+    padding: 1rem 1rem 5rem 1rem;
+}
+#chat-header {
+    font-size: 5rem;
+    color: floralwhite;
+    text-align: center;
+}
+#chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.contact-methods {
+    color: floralwhite;
+    font-size: 1.4rem;
+    width: 40%;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid floralwhite;
+}
+#contact-content img {
+    width: 4rem;
+}
+.contact-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: floralwhite;
+}
+.contact-top a {
+    color: floralwhite;
+}
+
+/* Begin Settings Style */
+#settings-content {
+    padding: 4rem 2rem 6rem 2rem;
+}
+#settingsForm {
+    font-size: 1.5rem;
+}
+#settingsForm p {
+    padding-top: 2rem;
+}
+#settingsSubmit {
+    height: 2rem;
+    width: 7rem;
+}

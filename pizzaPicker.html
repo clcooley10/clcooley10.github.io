@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/pizzaPicker.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Pizza Picker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="hamburger" class="open">
+        <a class="nav" id="welcome" href="#">Pizza Picker</a>
+        <a id="changeNavDisplay" href=#>☰</a>
+        <a class="nav" id="select-users" href="#">Create Order/Users</a>
+        <a class="nav" id="view" href="#">View Past Orders</a>
+        <a class="nav commercialUse" id="about" href="#">About this project</a>
+        <a class="nav commercialUse" id="contact" href="#">Contact me</a>
+        <a class="nav" id="settings" href="#">Settings</a>
+    </div>
+    <!-- The main content has 5 different sections, based on above menu choices
+         The sections are hidden until opened from the menu. -->
+    <div id="main-content">
+        <!-- Main page that is initially displayed-->
+        <div id="welcome-content" class="page show">
+            <div id="welcome-message">
+                <h1>Welcome to Pizza Picker!</h1>
+                <h3>Your solution to difficult pizza problems</h3>
+                <p>By creating profiles for hungry guests, you can create 
+                    a custom pizza prediction that will meet as many requests 
+                    as possible!
+                </p>
+                <a id="select-users" href="#">Create New Order!</a>
+            </div>
+            <div id="spinning-pizzas">
+                <img id="pizza1" class="show pizza-logo" src="images/hungryhowies.png" alt="Hungry Howies">
+                <img id="pizza2" class="hide pizza-logo" src="images/dominos2.png" alt="Dominos">
+                <img id="pizza3" class="hide pizza-logo" src="images/papajohns.png" alt="Papa Johns">
+                <img id="pizza4" class="hide pizza-logo" src="images/pizzahut.png" alt="Pizza Hut">
+                <img id="pizza5" class="hide pizza-logo large-pizza" src="images/littlecaesars.png" alt="Little Caesars">
+                <img id="pizza6" class="hide pizza-logo large-pizza" src="images/cottageInn.png" alt="Cottage Inn">
+            </div>
+        </div>
+
+        <!-- Select users page -->
+        <div id="select-users-content" class="page hide">
+            <h1 id="select-users-header">Who's Hungry!</h1>
+            <div id="user-list">
+                <p>Select from existing, or add new guest</p>
+                <div id="display-users">
+                    <div id="new-user-card" class="user-card">
+                        <img src="images/add.png" alt="add sign">
+                        <p>Create new user card</p>
+                    </div>
+                    <!-- Dynamically add previously created users here-->
+                </div>
+                <a id="create-order" href="#">Continue!</a>
+            </div>
+        </div>
+
+        <!-- Create User page -->
+        <div id="create-users-content" class="page hide">
+            <h1 id="create-user-header">Create New User</h1>
+            <form id="create-user-form" target="/null" method="GET">
+                <!-- Choose an icon -->
+                <fieldset id="icon-field">
+                    <legend>Choose an icon:</legend>
+                    <input type="radio" id="black-jaguar" name="black-jaguar">
+                    <label for="black-jaguar" id="jag-icon"></label>
+                    <input type="radio" id="bug" name="bug">
+                    <label for="bug" id="bug-icon"></label>
+                    <input type="radio" id="bull" name="bull">
+                    <label for="bull" id="bull-icon"></label>
+                    <input type="radio" id="butterfly" name="butterfly">
+                    <label for="butterfly" id="butterfly-icon"></label>
+                    <input type="radio" id="camel" name="camel">
+                    <label for="camel" id="camel-icon"></label>
+                    <input type="radio" id="cat" name="cat">
+                    <label for="cat" id="cat-icon"></label>
+                    <input type="radio" id="crab" name="crab">
+                    <label for="crab" id="crab-icon"></label>
+                    <input type="radio" id="dinosaur-egg" name="dinosaur-egg">
+                    <label for="dinosaur-egg" id="dinosaur-icon"></label>
+                    <input type="radio" id="dog" name="dog">
+                    <label for="dog" id="dog-icon"></label>
+                    <input type="radio" id="duck" name="flying-duck">
+                    <label for="duck" id="duck-icon"></label>
+                    <input type="radio" id="fox" name="fox">
+                    <label for="fox" id="fox-icon"></label>
+                    <input type="radio" id="panda" name="kiss-panda">
+                    <label for="panda" id="panda-icon"></label>
+                    <input type="radio" id="orca" name="orca">
+                    <label for="orca" id="orca-icon"></label>
+                    <input type="radio" id="pelican" name="pelican">
+                    <label for="pelican" id="pelican-icon"></label>
+                    <input type="radio" id="perch" name="perch">
+                    <label for="perch" id="perch-icon"></label>
+                    <input type="radio" id="platypus" name="platypus">
+                    <label for="platypus" id="platypus-icon"></label>
+                    <input type="radio" id="seagull" name="seagull">
+                    <label for="seagull" id="seagull-icon"></label>
+                    <input type="radio" id="shark" name="shark">
+                    <label for="shark" id="shark-icon"></label>
+                    <input type="radio" id="walrus" name="walrus">
+                    <label for="walrus" id="walrus-icon"></label>
+                    <input type="radio" id="woodpecker" name="woodpecker">
+                    <label for="woodpecker" id="woodpecker-icon"></label>
+                </fieldset><br><br>
+                <label for="user-name">Name:</label>
+                <input type="text" name="user-name" id="user-name"><br><br>
+                <label for="user-appetite">#Slices desired:</label>
+                <input type="number" name="user-appetite" id="user-appetite">
+                <label id="appetite-msg"for="user-appetite">(Think 12" medium pizza)</label><br><br>
+                <fieldset id="display-toppings">
+                    <!-- Dynamically pulled from JSON file -->
+                    <legend>Topping(s):</legend>
+                </fieldset>
+                <label for="user-fav-franchise">Favorite Franchise:</label>
+                <select id="user-fav-franchise" name="user-fav-franchise">
+                    <option value="cottageInn">Cottage Inn</option>
+                    <option value="dominos">Dominos</option>
+                    <option value="hungryHowies">Hungry Howies</option>
+                    <option value="littleCaesars">Little Caesars</option>
+                    <option value="papaJohns">Papa Johns</option>
+                    <option value="pizzaHut">Pizza Hut</option>
+                </select><br><br>
+                <label for="user-bad-franchise">Least Favorite Franchise:</label>
+                <select id="user-bad-franchise" name="user-bad-franchise">
+                    <option value="cottageInn">Cottage Inn</option>
+                    <option value="dominos">Dominos</option>
+                    <option value="hungryHowies">Hungry Howies</option>
+                    <option value="littleCaesars">Little Caesars</option>
+                    <option value="papaJohns">Papa Johns</option>
+                    <option value="pizzaHut">Pizza Hut</option>
+                </select><br><br>
+                <label for="user-addWeight">Most important criteria:</label>
+                <select id="user-addWeight" name="user-addWeight">
+                    <option value="user-toppings">My chosen toppings</option>
+                    <option value="user-fav-franchise">Get my favorite franchise</option>
+                    <option value="user-bad-franchise">Don't get my least favorite franchise</option>
+                </select>
+                <input type="submit">
+            </form>
+        </div>
+
+        <!-- Create order page -->
+        <div id="create-order-content" class="page hide">
+            <p>Create order page</p>
+        </div>
+
+        <!-- View past orders -->
+        <div id="view-content" class="page hide">
+            <h1 id="past-order-header">Past Orders</h1>
+            <div id="view-orders-wrapper">
+                <div class="order-container" id="orders-scroll">
+                    <div class="order-details">
+                        <div class="order-top">
+                            <p class="order-franchise">Hungry Howies</p>
+                            <p class="order-date">Created 10/03/2021</p>
+                        </div>
+                        <p class="order-for">Made for John, Sarah, and Ashley</p>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-top">
+                            <p class="order-franchise">Cottage Inn</p>
+                            <p class="order-date">Created 09/23/2021</p>
+                        </div>
+                        <p class="order-for">Made for John, Ashley, Mark, and Louis</p>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-top">
+                            <p class="order-franchise">Hungry Howies</p>
+                            <p class="order-date">Created 03/25/2020</p>
+                        </div>
+                        <p class="order-for">Made for Ashley, Mark, and Louis</p>
+                    </div>
+                    <a class="icons-link" href="https://icons8.com">link to icons source</a>
+                </div>
+                <div class="order-container" id="order-highlight">
+                    <p class="order-franchise">Franchise</p>
+                    <p class="order-for">name1, name2, name3</p>
+                    <p id="order-pizzas">Pizzas</p>
+                    <p id="order-total">$100.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About the project page -->
+        <div id="about-content" class="content-wrapper page hide">
+            <h1>Technical Details</h1>
+            <p class="about-pg">Thanks for checking out this project from my portfolio!
+                This page is only visible if coming from there, so as to not ruin the 'immersion' that 
+                would come with this being a commercial product, so I appreciate you taking the time to read 
+                this page!
+            </p>
+            <p class="about-pg">After finding the idea for this project, a general pizza order taker, 
+                I started looking for ways to make it more interesting. My inital thoughts were to find 
+                public APIs for different pizza chains to allow for up-to-date prices. These APIs are not 
+                made public, so I decided to create a JSON file with prices and pizza data that I found on 
+                their websites. (All prices and data are from Fort Collins, CO in 2021.)
+            </p>
+            <p class="about-pg">Now that I knew I would have data to display, I thought about other features 
+                I wanted to include. I drew pictures of what different screens would look like, how to display 
+                a user's saved profiles, the home screen, etc. I wrote out how I expected to implement the back end,
+                how I would use localStorage to easily create customizable user experiences without a server.
+            </p>
+            <p class="about-pg">I created the front-end first, leaving placeholders for where I envisioned 
+                user data and JSON data would be later displayed. Then once all the pages were created and could be 
+                navigated between, I worked on filling them in with the data and writing the functions that would run 
+                in the back end to compute a final order to give to the user.
+            </p>
+            <p class="about-pg">This little project was started from scratch, and written with HTML, CSS, and the 
+                jquery library of JavaScript to more easily manipulate the DOM, as well as get some practice with it as 
+                this is the first time I have used jquery. Things I learned from this project are, jquery, css transitions, 
+                reading form data without php (through js), creating a single page application with multiple views, and working 
+                with JSON data without React. At the time of writing, future plans include hosting this site on Amazon S3
+                and creating a db of users instead of storing them on the users machine.
+            </p>
+        </div>
+
+        <!-- Contact Info -->
+        <div id="contact-content" class="content-wrapper page hide">
+            <p id="chat-header">I'd love to chat!</p>
+            <div id="chat-options">
+                <div class="contact-methods" id="contact-phone-number">
+                    <div class="contact-top">
+                        <img src="images/phone.png" alt="phone">
+                        <p class="text-blue aligned-center">734 660 1775</p>
+                    </div>
+                    <p>Give me a call, or shoot me a text to set up a time to connect!</p>
+                </div>
+                <div class="contact-methods" id="contact-email">
+                    <div class="contact-top">
+                        <img src="images/email.png" alt="email">
+                        <a href="mailto:clcooley@umich.edu">clcooley@umich.edu</a>
+                    </div>
+                    <p>Send me an email with a little bit about you and your company!</p>
+                </div>
+                <div class="contact-methods" id="contact-portfolio">
+                    <div class="contact-top">
+                        <img src="images/portfolio.png" alt="portfolio">
+                        <a href="https://clcooley10.github.io/portfolio.html">Portfolio</a>
+                    </div>
+                    <p>Check out my portfolio if you havent already!</p>
+                </div>
+                <div class="contact-methods" id="contact-linkedin">
+                    <div class="contact-top">
+                        <img src="images/linkedin.png" alt="linkedin">
+                        <a href="https://linkedin.com/in/christopher-cooley-profile">LinkedIn profile</a>
+                    </div>
+                    <p>Send me a message on LinkedIn!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-content" class="content-wrapper page hide">
+            <h1>Settings</h1>
+            <form action="/" method="GET" id="settingsForm">
+                <p>Red Green Colorblind Correction:</p>
+                <input type="checkbox" id="redGreen" name="redGreen" value="true">
+                <label for="redGreen">Disable Green on Red Text (Sorry I did it for the theme)</label><br>
+                <p>Clear stored data:</p>
+                <input type="checkbox" id="clearData" name="clearData" value="true">
+                <label for="clearData">Deletes past orders, users, clears above setting, and reloads page</label><br><br>
+                <input type="submit" value="Update" id="settingsSubmit">
+            </form>
+        </div>
+    </div>
+    <script src="pizzaPicker.js"></script>
+</body>
+</html>

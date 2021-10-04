@@ -173,8 +173,6 @@
   max-width: 80%;
   margin: auto;
   padding-top: 3rem;
-  overflow: auto;
-  height: 28rem;
 
 }
 .project-wrapper {
@@ -211,6 +209,15 @@
 }
 .project-wrapper img {
   max-width: 100%;
+}
+#gotoPizzaPicker {
+  background-color: #BB3E00;
+  color: #F6F4D3;
+  width: 50%;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 /*Start experience section*/
