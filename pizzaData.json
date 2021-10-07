@@ -39,9 +39,8 @@
       "Veggie Sausage"
     ]
   },
-  "franchise": [
-    {
-      "name": "Dominos",
+  "franchise": {
+    "dominos": {
       "first_topping_free": true,
       "sauces": [
         "Robust Tomato Sauce",
@@ -112,8 +111,7 @@
         }
       }
     },
-    {
-      "name": "Pizza Hut",
+    "pizzaHut": {
       "first_topping_free": false,
       "sauces": [
         "Classic Marinara",
@@ -163,8 +161,7 @@
         "x-large": null
       }
     },
-    {
-      "name": "Little Caesars",
+    "littleCaesars": {
       "first_topping_free": true,
       "sauces": [
         "Tomato Sauce"
@@ -200,8 +197,7 @@
         }
       }
     },
-    {
-      "name": "Cottage Inn",
+    "cottageInn": {
       "first_topping_free": false,
       "sauces": [
         "Pizza Sauce",
@@ -283,8 +279,7 @@
         }
       }
     },
-    {
-      "name": "Hungry Howies",
+    "hungryHowies": {
       "first_topping_free": false,
       "sauces": [
         "Pizza Sauce"
@@ -347,8 +342,7 @@
         }
       }
     },
-    {
-      "name": "Papa Johns",
+    "papaJohns": {
       "first_topping_free": true,
       "sauces": [
         "Original",
@@ -415,5 +409,5 @@
         }
       }
     }
-  ]
+  }
 }

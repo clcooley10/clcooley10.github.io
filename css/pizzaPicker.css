@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background-color: #F6F4D3;
 }
 #hamburger {
     position: fixed;
@@ -55,7 +56,6 @@ html, body {
     border-top: 2px solid #F6F4D3;
 }
 #main-content {
-    background-color: #F6F4D3;
     margin-left: 15rem;
     height: 100%;
     transition: 0.5s;
@@ -82,8 +82,7 @@ html, body {
 }
 .pizza-logo {
     height: 20rem;
-    margin: auto;
-    transition: 2s;
+    margin: 1rem auto;
 }
 /* Little Caesars and Cottage Inn are too big */
 .large-pizza {
@@ -99,12 +98,13 @@ html, body {
 .user-card {
     background-color: white;
     border: 2px solid black;
-    max-width: 12rem;
+    margin-bottom: 2rem;
     height: 16rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+    flex-basis: 21%;
     cursor: pointer;
 }
 #user-list {
@@ -113,11 +113,35 @@ html, body {
     border: 2px solid black;
     border-radius: 16px;
     padding: 1rem;
+}
+#display-users {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
     height: 20rem;
+    overflow: auto;
 }
 #create-order {
     position: relative;
     left: 90%;
+}
+.name-on-card {
+    font-size: 1.4rem;
+    color: #BB3E00;
+}
+.trash-img {
+    height: 25px;
+    position: relative;
+    right: 5rem;
+    bottom: 1rem;
+}
+.trash-img:hover {
+    height: 35px;
+}
+.activeCard {
+    background-color: #4cbc5a;
 }
 
 /* Begin Create New User Style */
@@ -218,6 +242,17 @@ html, body {
 #appetite-msg {
     opacity: 0.8;
 }
+/* Begin update user preferences style */
+#update-preferences-content {
+    padding-top: 3rem;
+}
+#update-wrapper {
+    margin: auto;
+    max-width: 50%;
+    border: 3px solid black;
+    border-radius: 16px;
+    padding: 1rem;
+}
 /* Begin View Past Orders Style */
 #view-content {
     margin: auto;
@@ -255,9 +290,21 @@ html, body {
     padding: 0.5rem;
     overflow: auto;
 }
-.icons-link {
+/* Begin display results style */
+#create-order-content {
+    padding-top: 3rem;
 }
-
+#results-wrapper {
+    margin: auto;
+    max-width: 80%;
+}
+.franchiseResults {
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius: 16px;
+    min-height: 10rem;
+    margin-bottom: 4rem;
+}
 /* Begin About Style */
 .displayAboutContact {
     display: block;

@@ -31,7 +31,6 @@
                     a custom pizza prediction that will meet as many requests 
                     as possible!
                 </p>
-                <a id="select-users" href="#">Create New Order!</a>
             </div>
             <div id="spinning-pizzas">
                 <img id="pizza1" class="show pizza-logo" src="images/hungryhowies.png" alt="Hungry Howies">
@@ -55,7 +54,8 @@
                     </div>
                     <!-- Dynamically add previously created users here-->
                 </div>
-                <a id="create-order" href="#">Continue!</a>
+                <button id="create-order" disabled>Continue!</button>
+                <a class="icons-link" href="https://icons8.com">link to icons source</a>
             </div>
         </div>
 
@@ -107,21 +107,21 @@
                     <input type="radio" name="icon" id="woodpecker" value="woodpecker">
                     <label for="woodpecker" id="woodpecker-icon"></label>
                 </fieldset><br><br>
-                <label for="user-name">Name:</label>
+                <label for="user-name">Unique Name:</label>
                 <input type="text" name="user-name" id="user-name" required><br><br>
                 <label for="user-appetite">#Slices desired:</label>
-                <input type="number" name="user-appetite" id="user-appetite" required>
+                <input type="number" name="user-appetite" id="user-appetite" min="0" required>
                 <label id="appetite-msg"for="user-appetite">(Think 12" medium pizza)</label><br><br>
                 <fieldset id="display-toppings">
                     <!-- Dynamically pulled from JSON file -->
                     <legend>Choose the topping(s) on your slices</legend>
-                    <fieldset class="toppings-flex" id="display-meats">
+                    <fieldset class="toppings-flex display-meats">
                         <legend>Meats:</legend>
                     </fieldset>
-                    <fieldset class="toppings-flex" id="display-nonMeats">
+                    <fieldset class="toppings-flex display-nonMeats">
                         <legend>Non-Meats:</legend>
                     </fieldset>
-                </fieldset>
+                </fieldset><br>
                 <label for="user-fav-franchise">Favorite Franchise:</label>
                 <select id="user-fav-franchise" name="user-fav-franchise">
                     <option value="cottageInn">Cottage Inn</option>
@@ -149,10 +149,62 @@
                 <input type="submit">
             </form>
         </div>
-
+        <!-- Update user preferences for this order-->
+        <div id="update-preferences-content" class="page hide">
+            <div id="update-wrapper">
+                <p><span id="name-updateForm"></span>, please confirm or change your saved preferences</p>
+                <form id="update-preferences-form" target="null" method="GET">
+                    <label for="user-appetite">#Slices desired:</label>
+                    <input type="number" name="user-appetite" id="update-appetite" min="0" required>
+                    <label id="appetite-msg"for="update-appetite">(Think 12" medium pizza)</label><br><br>
+                    <fieldset id="display-toppings">
+                        <!-- Dynamically pulled from JSON file -->
+                        <legend>Choose the topping(s) on your slices</legend>
+                        <fieldset class="toppings-flex display-meats" id="toppings-meats">
+                            <legend>Meats:</legend>
+                        </fieldset>
+                        <fieldset class="toppings-flex display-nonMeats" id="toppings-nonMeats">
+                            <legend>Non-Meats:</legend>
+                        </fieldset>
+                    </fieldset><br>
+                    <label for="update-fav-franchise">Favorite Franchise:</label>
+                    <select id="update-fav-franchise" name="user-fav-franchise">
+                        <option id="FAVcottageInn" value="cottageInn">Cottage Inn</option>
+                        <option id="FAVdominos" value="dominos">Dominos</option>
+                        <option id="FAVhungryHowies" value="hungryHowies">Hungry Howies</option>
+                        <option id="FAVlittleCaesars"value="littleCaesars">Little Caesars</option>
+                        <option id="FAVpapaJohns" value="papaJohns">Papa Johns</option>
+                        <option id="FAVpapaHut" value="pizzaHut">Pizza Hut</option>
+                    </select><br><br>
+                    <label for="update-bad-franchise">Least Favorite Franchise:</label>
+                    <select id="update-bad-franchise" name="user-bad-franchise">
+                        <option id="BADcottageInn" value="cottageInn">Cottage Inn</option>
+                        <option id="BADdominos" value="dominos">Dominos</option>
+                        <option id="BADhungryHowies" value="hungryHowies">Hungry Howies</option>
+                        <option id="BADlittleCaesars" value="littleCaesars">Little Caesars</option>
+                        <option id="BADpapaJohns" value="papaJohns">Papa Johns</option>
+                        <option id="BADpizzaHut" value="pizzaHut">Pizza Hut</option>
+                    </select><br><br>
+                    <label for="update-addWeight">Most important criteria:</label>
+                    <select id="update-addWeight" name="user-addWeight">
+                        <option id="WEIGHTuser-toppings" value="user-toppings">My chosen toppings</option>
+                        <option id="WEIGHTuser-fav-franchise" value="user-fav-franchise">Get my favorite franchise</option>
+                        <option id="WEIGHTuser-bad-franchise" value="user-bad-franchise">Don't get my least favorite franchise</option>
+                    </select>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
         <!-- Create order page -->
         <div id="create-order-content" class="page hide">
-            <p>Create order page</p>
+            <div id="results-wrapper">
+                <div id="cottageInnResults" class="franchiseResults"></div>
+                <div id="dominosResults" class="franchiseResults"></div>
+                <div id="hungryHowiesResults" class="franchiseResults"></div>
+                <div id="littleCaesarsResults" class="franchiseResults"></div>
+                <div id="papaJohnsResults" class="franchiseResults"></div>
+                <div id="pizzaHutResults" class="franchiseResults"></div>
+            </div>
         </div>
 
         <!-- View past orders -->
