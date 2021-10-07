@@ -313,34 +313,100 @@ function computeOrder(userNames) {
     for( [_, userData] of Object.entries(usersObj)) {
         if(userNames.includes(userData["user-name"])) {
             activeUsersObj[userData["user-name"]] = userData;
-            numSlices += userData["user-appetite"];
+            numSlices += parseInt(userData["user-appetite"]);
         }
     }
-    let area = getArea(numSlices);
+    let area = getArea(numSlices, 6, 8);
     console.log("area",area);
 
     // Figure out order for each franchise
-    let franchises = ["cottageInn", "dominos", "hungryHowies", "littleCeasars", "papaJohns", "pizzaHut"];
+    let franchises = ["cottageInn", "dominos", "hungryHowies", "littleCaesars", "papaJohns", "pizzaHut"];
     let orders = {};
     franchises.forEach(element => {
-        orders[element] = getOrder(element, activeUsersObj);
+        orders[element] = getOrder(element, activeUsersObj, area);
     });
 }
 /*==============================================
  * pizzaArea
  * Determines the amount of pizza needed based on the number of slices requested
  *==============================================*/
-function getArea(slices) {
-    // A = pi * r**2 -> r = 6 -> A = 36*pi A_slice = 36*pi / 8 = 4.5*pi
-    return (4.5 * Math.PI * slices);
+function getArea(slices, radius, slicesPerPizza) {
+    return (radius * radius * Math.PI * slices) / slicesPerPizza;
 }
 /*==============================================
  * Find best order for passed franchise
  *==============================================*/
-function getOrder(franchise, users) {
-    console.log("Getting order for ", franchise);
+function getOrder(franchise, users, area) {
+    console.log("Getting order for", franchise);
+    let sizes = ["small", "medium", "large", "x-large"];
+    // pizza radius [sm, med, lg, x-lg]
+    let radii = [5,6,7,8];
+    let sizeArea = [];
+    let slices = [];
+    let availSizes = [];
     let franchiseObj = pizzaData["franchise"][franchise];
-    
+    let i = 0, len = sizes.length;
+    // Do two things at once, find area for each size, and find numSlices for each size
+    while(i < len) {
+        // if franchise has this size pizza, get slices
+        if(franchiseObj["pizzas"].hasOwnProperty(sizes[i]) && (franchiseObj["pizzas"][sizes[i]] !== null)) {
+            availSizes.push(sizes[i]);
+            slices[i] = franchiseObj["pizzas"][sizes[i]]["slices"];
+            sizeArea.push(radii[i] * radii[i] * Math.PI);
+        } else {
+            slices.push(0);
+            // this is well over 100 x-lg pizzas
+            sizeArea.push(21000);
+        }
+        i++;
+    }
+    /* Calculating the num pizzas by largest to smallest is not necessarily optimal
+     but it is easier and cheaper than doing small to large. There will almost always be extra.*/
+    let numPizzas = [];
+    i = sizes.length - 1;
+    while(i >=  0) {
+        let numPizza = 0;
+        if(availSizes.includes(sizes[i])) {
+            while(area > sizeArea[i]) {
+                area -= sizeArea[i];
+                numPizza++;
+            }
+        }
+        numPizzas.unshift(numPizza);
+        i--;
+    }
+    // if theres remainder, order on side of extra
+    if(area !== 0) {
+        switch(availSizes[0]) {
+            case "small":
+                numPizzas[0]++;
+                break;
+            case "medium":
+                numPizzas[1]++;
+                break;
+            case "large":
+                numPizzas[2]++;
+                break;
+            case "x-large":
+                numPizzas[3]++;
+                break;
+        }
+    }
+    console.log("numPizzas:", numPizzas);
+    /* Now that we know how many pizzas to order, put user's toppings on them
+    This assumes that 1/4 is the smallest fraction of pizza that be split*/
+    for([_,userData] of Object.entries(users)) {
+        i = 0;
+        while(i < userData["toppings"].length) {
+            if(franchiseObj["toppings"].contains(userData["toppings"][i])) {
+                //they have topping
+            }
+            i++;
+
+        }
+    }
+    return;
+
 }
 /*==============================================
  * Display final order
