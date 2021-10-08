@@ -334,9 +334,16 @@ function getArea(slices, radius, slicesPerPizza) {
     return (radius * radius * Math.PI * slices) / slicesPerPizza;
 }
 /*==============================================
+ * pizza slices
+ * Determines the number of slices available in a given area of pizza
+ *==============================================*/
+function getSlices(area, radius, slicesPerPizza) {
+    return area * slicesPerPizza / (radius * radius * Math.PI)
+}
+/*==============================================
  * Find best order for passed franchise
  *==============================================*/
-function getOrder(franchise, users, area) {
+function getOrder(franchise, users, totalArea) {
     console.log("Getting order for", franchise);
     let sizes = ["small", "medium", "large", "x-large"];
     // pizza radius [sm, med, lg, x-lg]
@@ -364,11 +371,12 @@ function getOrder(franchise, users, area) {
      but it is easier and cheaper than doing small to large. There will almost always be extra.*/
     let numPizzas = [];
     i = sizes.length - 1;
+    let areaCopy = totalArea;
     while(i >=  0) {
         let numPizza = 0;
         if(availSizes.includes(sizes[i])) {
-            while(area > sizeArea[i]) {
-                area -= sizeArea[i];
+            while(areaCopy > sizeArea[i]) {
+                areaCopy -= sizeArea[i];
                 numPizza++;
             }
         }
@@ -376,7 +384,7 @@ function getOrder(franchise, users, area) {
         i--;
     }
     // if theres remainder, order on side of extra
-    if(area !== 0) {
+    if(areaCopy !== 0) {
         switch(availSizes[0]) {
             case "small":
                 numPizzas[0]++;
@@ -397,16 +405,27 @@ function getOrder(franchise, users, area) {
     This assumes that 1/4 is the smallest fraction of pizza that be split*/
     for([_,userData] of Object.entries(users)) {
         i = 0;
+        let availToppings = [];
         while(i < userData["toppings"].length) {
-            if(franchiseObj["toppings"].contains(userData["toppings"][i])) {
+            if(franchiseObj["toppings"].includes(userData["toppings"][i]) ||
+            (franchiseObj.hasOwnProperty("premium_toppings") && 
+            franchiseObj["premium_toppings"] !== null && franchiseObj["premium_toppings"].includes(userData["toppings"][i]))) {
                 //they have topping
+                availToppings.push(userData["toppings"][i]);
             }
             i++;
-
         }
+        /* Even though userData is used beyond this scope, we overwrite with every franchise
+        before using the values, and we never push this back to storage*/
+        userData["availToppings"] = availToppings;
     }
-    return;
+    /* Now we know what toppings can go on our pizzas from this franchise*/
+    
+    for([_,userData] of Object.entries(users)) {
+        i = 0;
+        let areaWanted = getArea(userData["user-appetite"], 6, 8);
 
+    }
 }
 /*==============================================
  * Display final order
