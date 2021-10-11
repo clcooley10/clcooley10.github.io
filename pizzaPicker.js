@@ -325,6 +325,7 @@ function computeOrder(userNames) {
     franchises.forEach(element => {
         orders[element] = getOrder(element, activeUsersObj, area);
     });
+    displayOrder(orders);
 }
 /*==============================================
  * pizzaArea
@@ -341,10 +342,20 @@ function getSlices(area, radius, slicesPerPizza) {
     return area * slicesPerPizza / (radius * radius * Math.PI)
 }
 /*==============================================
+ * This is a pizza object used to make orders
+ *==============================================*/
+function Pizza(q1,q2,q3,q4,radius,onQuarter) {
+    this.q1 = q1;
+    this.q2 = q2;
+    this.q3 = q3;
+    this.q4 = q4;
+    this.radius = radius;
+    this.onQuarter = onQuarter;
+}
+/*==============================================
  * Find best order for passed franchise
  *==============================================*/
 function getOrder(franchise, users, totalArea) {
-    console.log("Getting order for", franchise);
     let sizes = ["small", "medium", "large", "x-large"];
     // pizza radius [sm, med, lg, x-lg]
     let radii = [5,6,7,8];
@@ -375,7 +386,7 @@ function getOrder(franchise, users, totalArea) {
     while(i >=  0) {
         let numPizza = 0;
         if(availSizes.includes(sizes[i])) {
-            while(areaCopy > sizeArea[i]) {
+            while(areaCopy >= sizeArea[i]) {
                 areaCopy -= sizeArea[i];
                 numPizza++;
             }
@@ -400,7 +411,6 @@ function getOrder(franchise, users, totalArea) {
                 break;
         }
     }
-    console.log("numPizzas:", numPizzas);
     /* Now that we know how many pizzas to order, put user's toppings on them
     This assumes that 1/4 is the smallest fraction of pizza that be split*/
     for([_,userData] of Object.entries(users)) {
@@ -419,19 +429,145 @@ function getOrder(franchise, users, totalArea) {
         before using the values, and we never push this back to storage*/
         userData["availToppings"] = availToppings;
     }
-    /* Now we know what toppings can go on our pizzas from this franchise*/
-    
-    for([_,userData] of Object.entries(users)) {
-        i = 0;
-        let areaWanted = getArea(userData["user-appetite"], 6, 8);
-
+    // Now we know what toppings can go on our pizzas from this franchise
+    // Create our order
+    let order = {   "small": [],
+                    "medium": [],
+                    "large": [],
+                    "x-large": []
+    };
+    let x = 0;
+    for(let i = 0; i < numPizzas.length; i++) {
+        for(let j = 0; j < numPizzas[i]; j++) {
+            order[sizes[i]].push(new Pizza([],[],[],[],radii[i], 1));
+            x++;
+        }
     }
+    // Make an array of the users that havent been satisfied yet & track areaLeft to top
+    let unSatisfiedUsers = [];
+    for([userName,userData] of Object.entries(users)) {
+        unSatisfiedUsers.push(userName);
+        userData["areaLeft"] = getArea(userData["user-appetite"], 6, 8);
+    }
+    // Fill pizzas one at a time, instead of by user, by decreasing size
+    let p = availSizes.length - 1;
+    while(p >= 0) {
+        // Early exit condition: all users are satisfied
+        if(!unSatisfiedUsers.length) {
+            break;
+        }
+        let pizzaArr = order[availSizes[p]];
+        for(let i = 0; i < pizzaArr.length; i++) {
+            let pizza = pizzaArr[i];
+            //While this pizza is not full && there are hungry users
+            while(pizza.onQuarter < 5 && unSatisfiedUsers.length) {
+                // Put on toppings for this unSatisfied user
+                let curUser = unSatisfiedUsers[0];
+                let areaWanted = users[curUser]["areaLeft"];
+                let areaPizza = getArea(1,pizza.radius,1);
+                let percentWanted = areaWanted / areaPizza;
+                let quartersGiven = 0;
+                if(percentWanted < .5) {            //give 1/4
+                    quartersGiven += 1;
+                } else if(percentWanted < .75) {    //give 2/4
+                    quartersGiven += 2;
+                } else if(percentWanted < 1) {      //give 3/4
+                    quartersGiven += 3;
+                } else {                            //give 4/4
+                    quartersGiven += 4;
+                }
+                let q = 0;
+                while(q < quartersGiven && pizza.onQuarter < 5) {
+                    // toppings are officially on a quarter of pizza
+                    pizza[`q${pizza.onQuarter}`] = [...users[curUser]["availToppings"]];
+                    // remove that quarter's area from areaLeft
+                    users[curUser]["areaLeft"] -= areaPizza*.25;
+                    // move to next quarter
+                    pizza.onQuarter++;
+                    q++;
+                }
+                // is the user satisfied
+                if(users[curUser]["areaLeft"] <= 0) {
+                    unSatisfiedUsers.splice(unSatisfiedUsers.indexOf(curUser), 1);
+                }
+            }
+        }
+        p--;
+    }
+    // The order should be completed here
+    console.log(`final order from ${franchise}:`,order);
+    return order;
+}
+/*==============================================
+ * Get the cost of an order
+ *==============================================*/
+function getCost(franchise, order) {
+    let total = 0;
+    let i = 0, sizes = ["small", "medium", "large", "x-large"];
+    // for each size
+    while(i < sizes.length) {
+        let j = 0;
+        // for each pizza of size
+        while(j < order[sizes[i]].length) {
+            //add the cost of the plain pizza
+            total += pizzaData[franchise]["pizzas"][sizes[i]]["pizza_price"];
+            // for each quarter of pizza
+            for(let k = 1; k < 5; k++) {
+                let ourToppings = order[sizes[i]][j][`q${k}`];
+                let premium_tops = pizzaData[franchise]["premium_toppings"];
+                if(premium_tops !== null) {
+                    // for each topping
+                    for(let x = 0; x < ourToppings.length; x++) {
+                        //charge premium price
+                        if(premium_tops.contains(ourToppings[x])) {
+                            total += pizzaData[franchise]["pizzas"][sizes[i]]["premium_topping_price"]*0.25;
+                        } else {
+                            total += pizzaData[franchise]["pizzas"][sizes[i]]["topping_price"]*0.25;
+                        }
+                    }
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+    return total;
 }
 /*==============================================
  * Display final order
  *==============================================*/
-function displayOrder() {
-    //TODO
+function displayOrder(orders) {
+    $('#results-wrapper').html = "";
+    let sizeOrder = ["small", "medium", "large", "x-large"];
+    // for each place
+    for([franchise,order] of Object.entries(orders)) {
+        let id = `#${franchise}Results`;
+        let mainWrap = document.createElement('div');
+        let total = getCost(franchise, order);
+        $(mainWrap).append(`<p>Total Price: $${total}</p>`);
+        // for each size
+        for(let i = 0; i < sizeOrder.length; i++) {
+            let sizeWrap = document.createElement('div');
+            // for each pizza of size
+            for(let j = 0; j < order[sizeOrder[i]].length; i++) {
+                let pizzaWrap = document.createElement('div');
+                let size = `<p>${sizeOrder[i]} pizza:</p>`;
+                $(pizzaWrap).append(size);
+                // for each quarter of pizza
+                for(let k = 1; k < 5; k++) {
+                    let toppings = "null";
+                    // if they have toppings on quarter
+                    if (order[sizeOrder[i]][j][`q${k}`].length) {
+                        toppings = `<p>q${k} -- ${order[sizeOrder[i]][j][`q${k}`].toString()}</p>`;
+                    } else {toppings = `<p>q${k} -- plain</p>`}
+                    $(pizzaWrap).append(toppings);
+                }
+                $(sizeWrap).append(pizzaWrap);
+            }
+            $(mainWrap).append(sizeWrap);
+        }
+        $(id).append(mainWrap);
+    }
 }
 /*==============================================
  * Update Settings

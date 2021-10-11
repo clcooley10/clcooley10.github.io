@@ -39,332 +39,330 @@
       "Veggie Sausage"
     ]
   },
-  "franchise": {
-    "dominos": {
-      "first_topping_free": true,
-      "sauces": [
-        "Robust Tomato Sauce",
-        "Hearty Marinara Sauce",
-        "Honey BBQ Sauce",
-        "Garlic Parmesan Sauce",
-        "Alfredo Sauce",
-        "Ranch"
-      ],
-      "toppings": [
-        "Bacon",
-        "Beef",
-        "Ham",
-        "Italian Sausage",
-        "Pepperoni",
-        "Philly Steak",
-        "Salami",
-        "Banana Peppers",
-        "Black Olives",
-        "Cheddar Cheese",
-        "Tomatoes",
-        "Feta Cheese",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Mushrooms",
-        "Onion",
-        "Pineapple",
-        "Red Peppers",
-        "Shredded Parmesan Asiago",
-        "Shredded Provolone Cheese",
-        "Spinach"
-      ],
-      "premium_toppings": [
-        "Grilled Chicken" 
-      ],
-      "pizzas": {
-        "small": {
-          "pizza_price": 7.99,
-          "topping_price": 1.25,
-          "premium_topping_price": 1.5,
-          "slices": 6
-        },
-        "medium": {
-          "pizza_price": 11.99,
-          "topping_price": 1.5,
-          "premium_topping_price": 1.75,
-          "slices": 8
-        },
-        "large": {
-          "pizza_price": 12.99,
-          "topping_price": 1.75,
-          "premium_topping_price": 2,
-          "slices": 8
-        },
-        "x-large": {
-          "pizza_price": 14.99,
-          "topping_price": 2,
-          "premium_topping_price": 2.25,
-          "slices": 6
-        }
+  "dominos": {
+    "first_topping_free": true,
+    "sauces": [
+      "Robust Tomato Sauce",
+      "Hearty Marinara Sauce",
+      "Honey BBQ Sauce",
+      "Garlic Parmesan Sauce",
+      "Alfredo Sauce",
+      "Ranch"
+    ],
+    "toppings": [
+      "Bacon",
+      "Beef",
+      "Ham",
+      "Italian Sausage",
+      "Pepperoni",
+      "Philly Steak",
+      "Salami",
+      "Banana Peppers",
+      "Black Olives",
+      "Cheddar Cheese",
+      "Tomatoes",
+      "Feta Cheese",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Mushrooms",
+      "Onion",
+      "Pineapple",
+      "Red Peppers",
+      "Shredded Parmesan Asiago",
+      "Shredded Provolone Cheese",
+      "Spinach"
+    ],
+    "premium_toppings": [
+      "Grilled Chicken" 
+    ],
+    "pizzas": {
+      "small": {
+        "pizza_price": 7.99,
+        "topping_price": 1.25,
+        "premium_topping_price": 1.5,
+        "slices": 6
+      },
+      "medium": {
+        "pizza_price": 11.99,
+        "topping_price": 1.5,
+        "premium_topping_price": 1.75,
+        "slices": 8
+      },
+      "large": {
+        "pizza_price": 12.99,
+        "topping_price": 1.75,
+        "premium_topping_price": 2,
+        "slices": 8
+      },
+      "x-large": {
+        "pizza_price": 14.99,
+        "topping_price": 2,
+        "premium_topping_price": 2.25,
+        "slices": 6
       }
-    },
-    "pizzaHut": {
-      "first_topping_free": false,
-      "sauces": [
-        "Classic Marinara",
-        "Creamy Garlic Parmesan",
-        "Barbeque",
-        "Buffalo"
-      ],
-      "toppings": [
-        "Bacon",
-        "Beef",
-        "Grilled Chicken",
-        "Ham",
-        "Italian Sausage",
-        "Meatballs",
-        "Pepperoni",
-        "Pork",
-        "Banana Peppers",
-        "Black Olives",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Mushrooms",
-        "Pineapple",
-        "Red Onion",
-        "Tomatoes"
-      ],
-      "premium_toppings": null,
-      "pizzas": {
-        "small": null,
-        "medium": {
-          "pizza_price": 10.99,
-          "topping_price": 1.6,
-          "premium_topping_price": 0,
-          "slices": 8
-        },
-        "large": {
-          "pizza_price": 12.99,
-          "topping_price": 2,
-          "premium_topping_price": 0,
-          "slices": 8
-        },
-        "x-large": null
+    }
+  },
+  "pizzaHut": {
+    "first_topping_free": false,
+    "sauces": [
+      "Classic Marinara",
+      "Creamy Garlic Parmesan",
+      "Barbeque",
+      "Buffalo"
+    ],
+    "toppings": [
+      "Bacon",
+      "Beef",
+      "Grilled Chicken",
+      "Ham",
+      "Italian Sausage",
+      "Meatballs",
+      "Pepperoni",
+      "Pork",
+      "Banana Peppers",
+      "Black Olives",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Mushrooms",
+      "Pineapple",
+      "Red Onion",
+      "Tomatoes"
+    ],
+    "premium_toppings": null,
+    "pizzas": {
+      "small": null,
+      "medium": {
+        "pizza_price": 10.99,
+        "topping_price": 1.6,
+        "premium_topping_price": 0,
+        "slices": 8
+      },
+      "large": {
+        "pizza_price": 12.99,
+        "topping_price": 2,
+        "premium_topping_price": 0,
+        "slices": 8
+      },
+      "x-large": null
+    }
+  },
+  "littleCaesars": {
+    "first_topping_free": true,
+    "sauces": [
+      "Tomato Sauce"
+    ],
+    "toppings": [
+      "Bacon",
+      "Beef",
+      "Ham",
+      "Italian Sausage",
+      "Pepperoni",
+      "Banana Peppers",
+      "Black Olives",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Mushrooms",
+      "Onion",
+      "Pineapple"
+    ],
+    "premium_toppings": null,
+    "pizzas": {
+      "small": null,
+      "medium": null,
+      "large": {
+        "pizza_price": 6.55,
+        "topping_price": 1.5,
+        "premium_topping_price": 0,
+        "slices": 8
+      },
+      "x-large": null
+    }
+  },
+  "cottageInn": {
+    "first_topping_free": false,
+    "sauces": [
+      "Pizza Sauce",
+      "Alfredo Sauce",
+      "Buffalo Sauce",
+      "Carolina Tangy Gold BBQ Sauce",
+      "Chipotle Sauce",
+      "Italian Dressing Sauce",
+      "Olive Oil Sauce",
+      "Pesto Sauce",
+      "Homemade Ranch Sauce",
+      "Sweet Baby Rays BBQ Sauce"
+    ],
+    "toppings": [
+      "Bacon",
+      "Beef",
+      "Ham",
+      "Italian Sausage",
+      "Pepperoni",
+      "Salami",
+      "Turkey",
+      "Artichokes",
+      "Banana Peppers",
+      "Black Olives",
+      "Broccoli",
+      "Tomatoes",
+      "Green Olives",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Minced Garlic",
+      "Mushrooms",
+      "Pineapple",
+      "Plant Based Sausage",
+      "Red Peppers",
+      "Red Onion",
+      "Spinach",
+      "Tomatoes"
+    ],
+    "premium_toppings": [
+      "Anchovies",
+      "Breaded Chicken",
+      "Grilled Chicken",
+      "Meatballs",
+      "Pulled Pork",
+      "Steak"
+    ],
+    "pizzas": {
+      "small": {
+        "pizza_price": 7.49,
+        "topping_price": 1.25,
+        "premium_topping_price": 2.5,
+        "slices": 6
+      },
+      "medium": {
+        "pizza_price": 8.99,
+        "topping_price": 1.5,
+        "premium_topping_price": 3,
+        "slices": 8
+      },
+      "large": {
+        "pizza_price": 10.99,
+        "topping_price": 1.75,
+        "premium_topping_price": 3.5,
+        "slices": 8
+      },
+      "x-large": {
+        "pizza_price": 12.99,
+        "topping_price": 2.5,
+        "premium_topping_price": 5,
+        "slices": 12
       }
-    },
-    "littleCaesars": {
-      "first_topping_free": true,
-      "sauces": [
-        "Tomato Sauce"
-      ],
-      "toppings": [
-        "Bacon",
-        "Beef",
-        "Ham",
-        "Italian Sausage",
-        "Pepperoni",
-        "Banana Peppers",
-        "Black Olives",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Mushrooms",
-        "Onion",
-        "Pineapple"
-      ],
-      "premium_toppings": null,
-      "pizzas": {
-        "small": null,
-        "medium": null,
-        "large": {
-          "pizza_price": 6.55,
-          "topping_price": 1.5,
-          "premium_topping_price": 0,
-          "slices": 8
-        },
-        "x-large": null
+    }
+  },
+  "hungryHowies": {
+    "first_topping_free": false,
+    "sauces": [
+      "Pizza Sauce"
+    ],
+    "toppings": [
+      "Bacon",
+      "Beef",
+      "Ham",
+      "Italian Sausage",
+      "Pepperoni",
+      "Banana Peppers",
+      "Black Olives",
+      "Cheddar Cheese",
+      "Feta Cheese",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Mushrooms",
+      "Parmesan Cheese",
+      "Pineapple",
+      "Red Onion",
+      "Tomatoes"
+    ],
+    "premium_toppings": [
+      "Grilled Chicken",
+      "Meatballs",
+      "Steak"
+    ],
+    "pizzas": {
+      "small": {
+        "pizza_price": 7.99,
+        "topping_price": 1.50,
+        "premium_topping_price": 3,
+        "slices": 6
+      },
+      "medium": {
+        "pizza_price": 9.99,
+        "topping_price": 1.7,
+        "premium_topping_price": 3.4,
+        "slices": 8
+      },
+      "large": {
+        "pizza_price": 11.99,
+        "topping_price": 2,
+        "premium_topping_price": 4,
+        "slices": 8
+      },
+      "x-large": {
+        "pizza_price": 13.99,
+        "topping_price": 2.2,
+        "premium_topping_price": 4.4,
+        "slices": 8
       }
-    },
-    "cottageInn": {
-      "first_topping_free": false,
-      "sauces": [
-        "Pizza Sauce",
-        "Alfredo Sauce",
-        "Buffalo Sauce",
-        "Carolina Tangy Gold BBQ Sauce",
-        "Chipotle Sauce",
-        "Italian Dressing Sauce",
-        "Olive Oil Sauce",
-        "Pesto Sauce",
-        "Homemade Ranch Sauce",
-        "Sweet Baby Rays BBQ Sauce"
-      ],
-      "toppings": [
-        "Bacon",
-        "Beef",
-        "Ham",
-        "Italian Sausage",
-        "Pepperoni",
-        "Salami",
-        "Turkey",
-        "Artichokes",
-        "Banana Peppers",
-        "Black Olives",
-        "Broccoli",
-        "Tomatoes",
-        "Green Olives",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Minced Garlic",
-        "Mushrooms",
-        "Pineapple",
-        "Plant Based Sausage",
-        "Red Peppers",
-        "Red Onion",
-        "Spinach",
-        "Tomatoes"
-      ],
-      "premium_toppings": [
-        "Anchovies",
-        "Breaded Chicken",
-        "Grilled Chicken",
-        "Meatballs",
-        "Pulled Pork",
-        "Steak"
-      ],
-      "pizzas": {
-        "small": {
-          "pizza_price": 7.49,
-          "topping_price": 1.25,
-          "premium_topping_price": 2.5,
-          "slices": 6
-        },
-        "medium": {
-          "pizza_price": 8.99,
-          "topping_price": 1.5,
-          "premium_topping_price": 3,
-          "slices": 8
-        },
-        "large": {
-          "pizza_price": 10.99,
-          "topping_price": 1.75,
-          "premium_topping_price": 3.5,
-          "slices": 8
-        },
-        "x-large": {
-          "pizza_price": 12.99,
-          "topping_price": 2.5,
-          "premium_topping_price": 5,
-          "slices": 12
-        }
-      }
-    },
-    "hungryHowies": {
-      "first_topping_free": false,
-      "sauces": [
-        "Pizza Sauce"
-      ],
-      "toppings": [
-        "Bacon",
-        "Beef",
-        "Ham",
-        "Italian Sausage",
-        "Pepperoni",
-        "Banana Peppers",
-        "Black Olives",
-        "Cheddar Cheese",
-        "Feta Cheese",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Mushrooms",
-        "Parmesan Cheese",
-        "Pineapple",
-        "Red Onion",
-        "Tomatoes"
-      ],
-      "premium_toppings": [
-        "Grilled Chicken",
-        "Meatballs",
-        "Steak"
-      ],
-      "pizzas": {
-        "small": {
-          "pizza_price": 7.99,
-          "topping_price": 1.50,
-          "premium_topping_price": 3,
-          "slices": 6
-        },
-        "medium": {
-          "pizza_price": 9.99,
-          "topping_price": 1.7,
-          "premium_topping_price": 3.4,
-          "slices": 8
-        },
-        "large": {
-          "pizza_price": 11.99,
-          "topping_price": 2,
-          "premium_topping_price": 4,
-          "slices": 8
-        },
-        "x-large": {
-          "pizza_price": 13.99,
-          "topping_price": 2.2,
-          "premium_topping_price": 4.4,
-          "slices": 8
-        }
-      }
-    },
-    "papaJohns": {
-      "first_topping_free": true,
-      "sauces": [
-        "Original",
-        "Alfredo Sauce",
-        "Buffalo Sauce",
-        "BBQ",
-        "Ranch"
-      ],
-      "toppings": [
-        "Anchovies",
-        "Bacon",
-        "Beef",
-        "Grilled Chicken",
-        "Ham",
-        "Italian Sausage",
-        "Meatballs",
-        "Pepperoni",
-        "Salami",
-        "Steak",
-        "Banana Peppers",
-        "Black Olives",
-        "Green Olives",
-        "Green Peppers",
-        "Jalapeno Peppers",
-        "Mushrooms",
-        "Pineapple",
-        "Onion",
-        "Spinach",
-        "Tomatoes"
-      ],
-      "premium_toppings": null,
-      "pizzas": {
-        "small": {
-          "pizza_price": 7.38,
-          "topping_price": 1.39,
-          "premium_topping_price": 0,
-          "slices": 6
-        },
-        "medium": {
-          "pizza_price": 10.58,
-          "topping_price": 1.59,
-          "premium_topping_price": 0,
-          "slices": 8
-        },
-        "large": {
-          "pizza_price": 12.78,
-          "topping_price": 1.79,
-          "premium_topping_price": 0,
-          "slices": 8
-        },
-        "x-large": {
-          "pizza_price": 14.98,
-          "topping_price": 1.99,
-          "premium_topping_price": 0,
-          "slices": 10
-        }
+    }
+  },
+  "papaJohns": {
+    "first_topping_free": true,
+    "sauces": [
+      "Original",
+      "Alfredo Sauce",
+      "Buffalo Sauce",
+      "BBQ",
+      "Ranch"
+    ],
+    "toppings": [
+      "Anchovies",
+      "Bacon",
+      "Beef",
+      "Grilled Chicken",
+      "Ham",
+      "Italian Sausage",
+      "Meatballs",
+      "Pepperoni",
+      "Salami",
+      "Steak",
+      "Banana Peppers",
+      "Black Olives",
+      "Green Olives",
+      "Green Peppers",
+      "Jalapeno Peppers",
+      "Mushrooms",
+      "Pineapple",
+      "Onion",
+      "Spinach",
+      "Tomatoes"
+    ],
+    "premium_toppings": null,
+    "pizzas": {
+      "small": {
+        "pizza_price": 7.38,
+        "topping_price": 1.39,
+        "premium_topping_price": 0,
+        "slices": 6
+      },
+      "medium": {
+        "pizza_price": 10.58,
+        "topping_price": 1.59,
+        "premium_topping_price": 0,
+        "slices": 8
+      },
+      "large": {
+        "pizza_price": 12.78,
+        "topping_price": 1.79,
+        "premium_topping_price": 0,
+        "slices": 8
+      },
+      "x-large": {
+        "pizza_price": 14.98,
+        "topping_price": 1.99,
+        "premium_topping_price": 0,
+        "slices": 10
       }
     }
   }
