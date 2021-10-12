@@ -2,6 +2,12 @@ html, body {
     height: 100%;
     background-color: #F6F4D3;
 }
+.green-text {
+color: #4cbc5a;
+}
+.red-text {
+color:#BB3E00;
+}
 #hamburger {
     position: fixed;
     height: 100%;
@@ -299,11 +305,17 @@ html, body {
     max-width: 80%;
 }
 .franchiseResults {
+    display: flex;
+    justify-content: space-between; 
     padding: 2rem;
     border: 2px solid black;
     border-radius: 16px;
     min-height: 10rem;
     margin-bottom: 4rem;
+}
+.result-highlights p {
+    font-size: 1.4rem;
+    margin-top: 1rem;
 }
 /* Begin About Style */
 .displayAboutContact {

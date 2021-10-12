@@ -178,7 +178,7 @@ $('#create-order').click(async function() {
             console.log("newData:", newData);
             userData["user-appetite"] = newData["user-appetite"];
             userData["user-fav-franchise"] = newData["user-fav-franchise"];
-            userData["user-bad-franchise"] = newData["user-fav-franchise"];
+            userData["user-bad-franchise"] = newData["user-bad-franchise"];
             userData["toppings"] = newData["toppings"];
             userData["user-addWeight"] = newData["user-addWeight"];
             // Now that the indv user is updated, update the collection
@@ -325,7 +325,7 @@ function computeOrder(userNames) {
     franchises.forEach(element => {
         orders[element] = getOrder(element, activeUsersObj, area);
     });
-    displayOrder(orders);
+    displayOrder(orders, activeUsersObj);
 }
 /*==============================================
  * pizzaArea
@@ -333,13 +333,6 @@ function computeOrder(userNames) {
  *==============================================*/
 function getArea(slices, radius, slicesPerPizza) {
     return (radius * radius * Math.PI * slices) / slicesPerPizza;
-}
-/*==============================================
- * pizza slices
- * Determines the number of slices available in a given area of pizza
- *==============================================*/
-function getSlices(area, radius, slicesPerPizza) {
-    return area * slicesPerPizza / (radius * radius * Math.PI)
 }
 /*==============================================
  * This is a pizza object used to make orders
@@ -362,7 +355,7 @@ function getOrder(franchise, users, totalArea) {
     let sizeArea = [];
     let slices = [];
     let availSizes = [];
-    let franchiseObj = pizzaData["franchise"][franchise];
+    let franchiseObj = pizzaData[franchise];
     let i = 0, len = sizes.length;
     // Do two things at once, find area for each size, and find numSlices for each size
     while(i < len) {
@@ -494,8 +487,6 @@ function getOrder(franchise, users, totalArea) {
         }
         p--;
     }
-    // The order should be completed here
-    console.log(`final order from ${franchise}:`,order);
     return order;
 }
 /*==============================================
@@ -509,56 +500,98 @@ function getCost(franchise, order) {
         let j = 0;
         // for each pizza of size
         while(j < order[sizes[i]].length) {
+            let pizzaPrice = 0;
+            let toppingOnQtr = 0; // used to determine how much money to refund if the first top was free
             //add the cost of the plain pizza
-            total += pizzaData[franchise]["pizzas"][sizes[i]]["pizza_price"];
+            pizzaPrice += pizzaData[franchise]["pizzas"][sizes[i]]["pizza_price"];
             // for each quarter of pizza
             for(let k = 1; k < 5; k++) {
                 let ourToppings = order[sizes[i]][j][`q${k}`];
                 let premium_tops = pizzaData[franchise]["premium_toppings"];
-                if(premium_tops !== null) {
+                if(premium_tops !== null) { // charge by topping if some have dif price
                     // for each topping
                     for(let x = 0; x < ourToppings.length; x++) {
+                        toppingOnQtr++;
                         //charge premium price
-                        if(premium_tops.contains(ourToppings[x])) {
-                            total += pizzaData[franchise]["pizzas"][sizes[i]]["premium_topping_price"]*0.25;
+                        if(premium_tops.includes(ourToppings[x])) {
+                            pizzaPrice += pizzaData[franchise]["pizzas"][sizes[i]]["premium_topping_price"]*0.25;
                         } else {
-                            total += pizzaData[franchise]["pizzas"][sizes[i]]["topping_price"]*0.25;
+                            pizzaPrice += pizzaData[franchise]["pizzas"][sizes[i]]["topping_price"]*0.25;
                         }
                     }
+                } else { // all are same price
+                    pizzaPrice += pizzaData[franchise]["pizzas"][sizes[i]]["topping_price"] * ourToppings.length * 0.25;
                 }
             }
+            // if first topping was free, and they got toppings, reduce the cost
+            if(pizzaData[franchise]["first_topping_free"] && toppingOnQtr) {
+                pizzaPrice -= pizzaData[franchise]["pizzas"][sizes[i]]["topping_price"]*0.25*toppingOnQtr;
+            }
+            total += pizzaPrice;
             j++;
         }
         i++;
     }
-    return total;
+    return parseFloat(total.toFixed(2));
 }
 /*==============================================
  * Display final order
  *==============================================*/
-function displayOrder(orders) {
-    $('#results-wrapper').html = "";
+function displayOrder(orders, users) {
+    $('.result-body').remove();
+    $('.rm-highlights').remove();
     let sizeOrder = ["small", "medium", "large", "x-large"];
-    // for each place
+    // Obtain totals in advance in order to add highlight for cheapest option
+    let totals = [];
+    let cheapestFranchise = "";
+    let minPrice = 9999999;
+    for([franchise, order] of Object.entries(orders)) {
+        let price = getCost(franchise, order);
+        if(price < minPrice) {
+            minPrice = price;
+            cheapestFranchise = franchise;
+        }
+        totals.push(price);
+    }
+    // These are highlights
+    let fav = getUserOpinion(users, true);
+    let leastFav = getUserOpinion(users, false);
+    // Display for each place
+    let totalsInd = 0;
     for([franchise,order] of Object.entries(orders)) {
+        // These refer to DOM elements
         let id = `#${franchise}Results`;
+        let highlightWrap = `#${franchise}Highlights`;
+        let highlights = document.createElement('div');
+        $(highlights).addClass("rm-highlights");
         let mainWrap = document.createElement('div');
-        let total = getCost(franchise, order);
+        $(mainWrap).addClass("result-body");
+        // These deal with highlights
+        let total = totals[totalsInd++];
         $(mainWrap).append(`<p>Total Price: $${total}</p>`);
+        let uniqueAvailToppings = [];
         // for each size
         for(let i = 0; i < sizeOrder.length; i++) {
             let sizeWrap = document.createElement('div');
             // for each pizza of size
-            for(let j = 0; j < order[sizeOrder[i]].length; i++) {
+            for(let j = 0; j < order[sizeOrder[i]].length; j++) {
                 let pizzaWrap = document.createElement('div');
-                let size = `<p>${sizeOrder[i]} pizza:</p>`;
+                $(pizzaWrap).addClass("pizza-wrap");
+                let size = `<h3>${sizeOrder[i]} pizza:</h3>`;
                 $(pizzaWrap).append(size);
                 // for each quarter of pizza
                 for(let k = 1; k < 5; k++) {
                     let toppings = "null";
                     // if they have toppings on quarter
-                    if (order[sizeOrder[i]][j][`q${k}`].length) {
-                        toppings = `<p>q${k} -- ${order[sizeOrder[i]][j][`q${k}`].toString()}</p>`;
+                    let qtr = order[sizeOrder[i]][j][`q${k}`];
+                    if (qtr.length) {
+                        toppings = `<p>q${k} -- ${qtr.join(", ").toString()}</p>`;
+                        // for each topping on this quarter
+                        for(let m = 0; m < qtr.length; m++) {
+                            if(uniqueAvailToppings.indexOf(qtr[m]) === -1) {
+                                uniqueAvailToppings.push(qtr[m]);
+                            }
+                        }
                     } else {toppings = `<p>q${k} -- plain</p>`}
                     $(pizzaWrap).append(toppings);
                 }
@@ -567,7 +600,71 @@ function displayOrder(orders) {
             $(mainWrap).append(sizeWrap);
         }
         $(id).append(mainWrap);
+        //add highlights here
+        $(highlights).append("<h1>Highlights:</h1>");
+        if(franchise === cheapestFranchise) {
+            let cheap = "<p class='green-text'>This is the cheapest option!</p>"
+            $(highlights).append(cheap);
+        }
+        if(franchise === fav) {
+            let favorite = "<p class='green-text'>A majority said this was their favorite place</p>";
+            $(highlights).append(favorite);
+        } else if(franchise === leastFav) {
+            let leastFavorite = "<p class='red-text'>A majority said this was their least favorite place</p>";
+            $(highlights).append(leastFavorite);
+        }
+        // able to save computations by calculating avail toppings above
+        let numAvail = uniqueAvailToppings.length;
+        // Have to reloop through user preferences here to get all toppings
+        let uniqueReqTop = [];
+        for([_,data] of Object.entries(users)) {
+            for(let y = 0; y < data["toppings"].length; y++) {
+                if(uniqueReqTop.indexOf(data["toppings"][y]) === -1) {
+                    uniqueReqTop.push(data["toppings"][y]);
+                }
+            }
+        }
+        let totalRequested = uniqueReqTop.length;
+        let color = (numAvail / totalRequested > 0.5) ? "green" : "red"
+        $(highlights).append(`<p class='${color}-text'>${franchise} had ${numAvail} / ${totalRequested} of your toppings</p>`);
+        $(highlightWrap).append(highlights);
     }
+}
+/*==============================================
+ * getUserOpinion looks at users' (least) favorite place to rank the best/worst
+ *==============================================*/
+function getUserOpinion(users, favorite) {
+    console.log(users);
+    let tally = {
+        "cottageInn": 0,
+        "dominos": 0,
+        "hungryHowies": 0,
+        "littleCaesars": 0,
+        "papaJohns": 0,
+        "pizzaHut": 0
+    }
+    let param = null;
+    if(favorite) {
+        param = "user-fav-franchise";
+    } else {param = "user-least-franchise"}
+    let numUsers = 0;
+    for([_,userData] of Object.entries(users)) {
+        tally[userData[param]]++;
+        numUsers++;
+    }
+    //go through our tally and return the max
+    let max = 0;
+    let franch = "";
+    for([key, val] of Object.entries(tally)) {
+        if(val > max) {
+            max = val;
+            franch = key;
+        }
+    }
+    // We want a strict majority
+    if((max/numUsers) > 0.5) {
+        return franch;
+    } else {return "none"}
 }
 /*==============================================
  * Update Settings
