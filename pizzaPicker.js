@@ -701,10 +701,13 @@ $(document).on('click', '.order-details', function(event) {
     //bc these are dynamically created, the orderNum is always [1]
     let orderNum = $(orderDiv)[0].classList[1];
     //close the currently open one
-    $(`.highlight.show`).toggleClass("show hide");
-    $(`.highlight.hide.${orderNum}`).toggleClass("show hide");
-    if($('#default-prev-highlight').hasClass("show")) {
-        $('#default-prev-highlight').toggleClass("show hide");
+    $(`.highlight.show`).toggleClass('show hide');
+    $(`.highlight.hide.${orderNum}`).toggleClass('show hide');
+    if($('#default-prev-highlight').hasClass('show')) {
+        $('#default-prev-highlight').toggleClass('show hide');
+    }
+    if($('#default-prev-order').hasClass('show')) {
+        $('#default-prev-order').toggleClass('show hide');
     }
 });
 /*==============================================

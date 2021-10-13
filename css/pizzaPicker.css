@@ -43,7 +43,7 @@ color:#BB3E00;
     text-decoration: none;
     color: #4cbc5a;
     font-size: 1.4rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1rem 0.75rem 0;
     width: 13rem;
     border-bottom: 2px solid #F6F4D3;
     margin-left: 2rem;
@@ -51,6 +51,7 @@ color:#BB3E00;
 }
 #hamburger a:hover {
     color: #F6F4D3;
+    text-align: left;
 }
 #changeNavDisplay {
     position: absolute;
@@ -124,9 +125,11 @@ color:#BB3E00;
     padding: 1rem;
 }
 #new-symbol {
-    transition: transform .5s;
+    height: 80px;
+    transition: height 1s, transform 1s;
 }
 #new-symbol:hover {
+    height: 100px;
     transform: rotate(90deg);
 }
 #display-users {
@@ -374,6 +377,18 @@ color:#BB3E00;
     margin: 1rem;
     padding: 1rem;
     border: 2px solid floralwhite;
+}
+#contact-phone-number:hover {
+    transform: rotate(5deg);
+}
+#contact-email:hover {
+    transform: rotate(-5deg);
+}
+#contact-portfolio:hover {
+    transform: rotate(5deg);
+}
+#contact-linkedin:hover {
+    transform: rotate(-5deg);
 }
 #contact-content img {
     width: 4rem;
