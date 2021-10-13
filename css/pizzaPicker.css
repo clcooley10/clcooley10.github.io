@@ -8,6 +8,9 @@ color: #4cbc5a;
 .red-text {
 color:#BB3E00;
 }
+.right-align {
+    float: right;
+}
 #hamburger {
     position: fixed;
     height: 100%;
@@ -120,6 +123,12 @@ color:#BB3E00;
     border-radius: 16px;
     padding: 1rem;
 }
+#new-symbol {
+    transition: transform .5s;
+}
+#new-symbol:hover {
+    transform: rotate(90deg);
+}
 #display-users {
     display: flex;
     justify-content: space-evenly;
@@ -151,9 +160,6 @@ color:#BB3E00;
 }
 
 /* Begin Create New User Style */
-#create-users-content {
-    padding-top: 2rem;
-}
 #create-user-header {
     text-align: center;
     font-size: 3rem;
@@ -164,6 +170,7 @@ color:#BB3E00;
     border: 2px solid black;
     border-radius: 16px;
     padding: 1rem;
+    overflow: hidden;
 }
 .toppings-flex {
     display: flex;
@@ -252,6 +259,9 @@ color:#BB3E00;
 #update-preferences-content {
     padding-top: 3rem;
 }
+#update-preferences-form {
+    overflow: hidden;
+}
 #update-wrapper {
     margin: auto;
     max-width: 50%;
@@ -286,6 +296,7 @@ color:#BB3E00;
 }
 #orders-scroll {
     border: 2px solid #BB3E00;
+    overflow: auto;
 }
 #order-highlight {
     border: 2px solid #4cbc5a;
@@ -296,6 +307,9 @@ color:#BB3E00;
     padding: 0.5rem;
     overflow: auto;
 }
+.order-details{
+    cursor: pointer;
+}
 /* Begin display results style */
 #create-order-content {
     padding-top: 3rem;
@@ -305,13 +319,15 @@ color:#BB3E00;
     max-width: 80%;
 }
 .franchiseResults {
-    display: flex;
-    justify-content: space-between; 
     padding: 2rem;
     border: 2px solid black;
     border-radius: 16px;
     min-height: 10rem;
     margin-bottom: 4rem;
+}
+.dynamic-results {
+    display: flex;
+    justify-content: space-between; 
 }
 .result-highlights p {
     font-size: 1.4rem;

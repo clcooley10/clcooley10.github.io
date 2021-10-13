@@ -50,7 +50,7 @@
                 <p>Select from existing, or add new guest</p>
                 <div id="display-users">
                     <div id="new-user-card" class="user-card">
-                        <img src="images/add.png" alt="add sign">
+                        <img id="new-symbol" src="images/add.png" alt="add sign">
                         <p>Create new user card</p>
                     </div>
                     <!-- Dynamically add previously created users here-->
@@ -107,11 +107,11 @@
                     <label for="walrus" id="walrus-icon"></label>
                     <input type="radio" name="icon" id="woodpecker" value="woodpecker">
                     <label for="woodpecker" id="woodpecker-icon"></label>
-                </fieldset><br><br>
+                </fieldset><br>
                 <label for="user-name">Unique Name:</label>
                 <input type="text" name="user-name" id="user-name" required><br><br>
                 <label for="user-appetite">#Slices desired:</label>
-                <input type="number" name="user-appetite" id="user-appetite" min="0" required>
+                <input type="number" name="user-appetite" id="user-appetite" min="1" required>
                 <label id="appetite-msg"for="user-appetite">(Think 12" medium pizza)</label><br><br>
                 <fieldset id="display-toppings">
                     <!-- Dynamically pulled from JSON file -->
@@ -140,24 +140,26 @@
                     <option value="littleCaesars">Little Caesars</option>
                     <option value="papaJohns">Papa Johns</option>
                     <option value="pizzaHut">Pizza Hut</option>
-                </select><br><br>
+                </select><br>
+                <!-- Removing for first build
                 <label for="user-addWeight">Most important criteria:</label>
                 <select id="user-addWeight" name="user-addWeight">
                     <option value="user-toppings">My chosen toppings</option>
                     <option value="user-fav-franchise">Get my favorite franchise</option>
                     <option value="user-bad-franchise">Don't get my least favorite franchise</option>
                 </select>
-                <input type="submit">
+                -->
+                <input class="right-align" type="submit">
             </form>
         </div>
         <!-- Update user preferences for this order-->
         <div id="update-preferences-content" class="page hide">
             <div id="update-wrapper">
-                <p><span id="name-updateForm"></span>, please confirm or change your saved preferences</p>
+                <h4><span id="name-updateForm"></span>, please confirm or change your saved preferences</h4>
                 <form id="update-preferences-form" target="null" method="GET">
                     <label for="user-appetite">#Slices desired:</label>
                     <input type="number" name="user-appetite" id="update-appetite" min="0" required>
-                    <label id="appetite-msg"for="update-appetite">(Think 12" medium pizza)</label><br><br>
+                    <label id="appetite-msg"for="update-appetite">(Think 12" medium pizza)</label><br>
                     <fieldset id="display-toppings">
                         <!-- Dynamically pulled from JSON file -->
                         <legend>Choose the topping(s) on your slices</legend>
@@ -185,14 +187,16 @@
                         <option id="BADlittleCaesars" value="littleCaesars">Little Caesars</option>
                         <option id="BADpapaJohns" value="papaJohns">Papa Johns</option>
                         <option id="BADpizzaHut" value="pizzaHut">Pizza Hut</option>
-                    </select><br><br>
+                    </select><br>
+                    <!--Removing for first build
                     <label for="update-addWeight">Most important criteria:</label>
                     <select id="update-addWeight" name="user-addWeight">
                         <option id="WEIGHTuser-toppings" value="user-toppings">My chosen toppings</option>
                         <option id="WEIGHTuser-fav-franchise" value="user-fav-franchise">Get my favorite franchise</option>
                         <option id="WEIGHTuser-bad-franchise" value="user-bad-franchise">Don't get my least favorite franchise</option>
                     </select>
-                    <input type="submit">
+                    -->
+                    <input  class="right-align" type="submit">
                 </form>
             </div>
         </div>
@@ -200,40 +204,58 @@
         <div id="create-order-content" class="page hide">
             <div id="results-wrapper">
                 <div class="franchiseResults">
-                    <div id="cottageInnResults">
-                        <h1 class="result-header">Cottage Inn:</h1>
+                    <div class="dynamic-results">
+                        <div id="cottageInnResults">
+                            <h1 class="result-header">Cottage Inn:</h1>
+                        </div>
+                        <div id="cottageInnHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="cottageInnHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
                 <div class="franchiseResults">
-                    <div id="dominosResults">
-                        <h1 class="result-header">Dominos:</h1>
+                    <div class="dynamic-results">
+                        <div id="dominosResults">
+                            <h1 class="result-header">Dominos:</h1>
+                        </div>
+                        <div id="dominosHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="dominosHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
                 <div class="franchiseResults">
-                    <div id="hungryHowiesResults">
-                        <h1 class="result-header">Hungry Howies:</h1>
+                    <div class="dynamic-results">
+                        <div id="hungryHowiesResults">
+                            <h1 class="result-header">Hungry Howies:</h1>
+                        </div>
+                        <div id="hungryHowiesHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="hungryHowiesHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
                 <div class="franchiseResults">
-                    <div id="littleCaesarsResults">
-                        <h1 class="result-header">Little Caesars:</h1>
+                    <div class="dynamic-results">
+                        <div id="littleCaesarsResults">
+                            <h1 class="result-header">Little Caesars:</h1>
+                        </div>
+                        <div id="littleCaesarsHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="littleCaesarsHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
                 <div class="franchiseResults">
-                    <div id="papaJohnsResults">
-                        <h1 class="result-header">Papa Johns:</h1>
+                    <div class="dynamic-results">
+                        <div id="papaJohnsResults">
+                            <h1 class="result-header">Papa Johns:</h1>
+                        </div>
+                        <div id="papaJohnsHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="papaJohnsHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
                 <div class="franchiseResults">
-                    <div id="pizzaHutResults">
-                        <h1 class="result-header">Pizza Hut:</h1>
+                    <div class="dynamic-results">
+                        <div id="pizzaHutResults">
+                            <h1 class="result-header">Pizza Hut:</h1>
+                        </div>
+                        <div id="pizzaHutHighlights" class="result-highlights"></div>
                     </div>
-                    <div id="pizzaHutHighlights" class="result-highlights"></div>
+                    <button class="right-align save-order">Save Order</button>
                 </div>
             </div>
         </div>
@@ -243,34 +265,14 @@
             <h1 id="past-order-header">Past Orders</h1>
             <div id="view-orders-wrapper">
                 <div class="order-container" id="orders-scroll">
-                    <div class="order-details">
-                        <div class="order-top">
-                            <p class="order-franchise">Hungry Howies</p>
-                            <p class="order-date">Created 10/03/2021</p>
-                        </div>
-                        <p class="order-for">Made for John, Sarah, and Ashley</p>
-                    </div>
-                    <div class="order-details">
-                        <div class="order-top">
-                            <p class="order-franchise">Cottage Inn</p>
-                            <p class="order-date">Created 09/23/2021</p>
-                        </div>
-                        <p class="order-for">Made for John, Ashley, Mark, and Louis</p>
-                    </div>
-                    <div class="order-details">
-                        <div class="order-top">
-                            <p class="order-franchise">Hungry Howies</p>
-                            <p class="order-date">Created 03/25/2020</p>
-                        </div>
-                        <p class="order-for">Made for Ashley, Mark, and Louis</p>
-                    </div>
+                    <!--Dynamically add Prev orders here-->
                     <a class="icons-link" href="https://icons8.com">link to icons source</a>
                 </div>
                 <div class="order-container" id="order-highlight">
-                    <p class="order-franchise">Franchise</p>
-                    <p class="order-for">name1, name2, name3</p>
-                    <p id="order-pizzas">Pizzas</p>
-                    <p id="order-total">$100.00</p>
+                    <div class="show" id="default-prev-highlight">
+                        <p>Click an order on the left to show more details</p>
+                    </div>
+                    <!--Dynamically add content-->
                 </div>
             </div>
         </div>

@@ -3,8 +3,13 @@ let pizzaData = {};
 /*==============================================
  * PAGE LOAD
  * init vars and run 1-off functions
+ * Includes:
+ ***Fixes red on green text for RG colorblind folks
+ ***Includes additional pages if navigating from portfolio
+ ***Getting PizzaData
+ ***Displaying toppings for forms
+ ***Loading previous orders
  *==============================================*/
-
 $(function() {
     var redGreen = localStorage.getItem("redGreen");
     if(redGreen === "true") {
@@ -21,6 +26,7 @@ $(function() {
         pizzaData = data;
         displayToppings();
     });
+    displayPrevOrders();
 
 });
 /*==============================================
@@ -30,6 +36,7 @@ $(function() {
 $( async function() {
     var cur = 1;
     while ( $('#welcome-content').hasClass("show")) {
+        console.log("running line 33");
         await new Promise(r => setTimeout(r, 5000));
         $('#pizza'+cur).toggleClass("show hide");
         cur = (cur < 6) ? (cur + 1) : 1;
@@ -44,12 +51,11 @@ $( async function() {
 $('#changeNavDisplay').click(function() {
     // Currently open, being closed
     if( $('#hamburger').hasClass("open")) {
-        $('#hamburger').removeClass("open").addClass("closed");
         $('#main-content').css("margin-left", "2rem");
     } else {
-        $('#hamburger').removeClass("closed").addClass("open");
         $('#main-content').css("margin-left", "15rem");
     }
+    $('#hamburger').toggleClass("open closed");
 });
 /*==============================================
  * Display main content
@@ -168,6 +174,8 @@ $('#create-order').click(async function() {
     users.each(function() {
         activeUserNames.push(this.childNodes[2].innerHTML);
     });
+    //Set once instead of passing to functions
+    localStorage.setItem("activeUsers",JSON.stringify(activeUserNames));
     // Make sure the above people's wants are accurate from stored data
     let usersObj = JSON.parse(localStorage.getItem("userCards"));
     for(const [_, userData] of Object.entries(usersObj)) {
@@ -180,13 +188,13 @@ $('#create-order').click(async function() {
             userData["user-fav-franchise"] = newData["user-fav-franchise"];
             userData["user-bad-franchise"] = newData["user-bad-franchise"];
             userData["toppings"] = newData["toppings"];
-            userData["user-addWeight"] = newData["user-addWeight"];
+            //userData["user-addWeight"] = newData["user-addWeight"];
             // Now that the indv user is updated, update the collection
             usersObj[userData["user-name"]] = userData;
         }
     }
     localStorage.setItem("userCards", JSON.stringify(usersObj));
-    computeOrder(activeUserNames);
+    computeOrder();
 });
 /*==============================================
  * Update User Answers
@@ -200,8 +208,8 @@ function updateUserAnswers(userData) {
     $(favFranchise).prop("selected", true);
     let badFranchise = `#BAD${userData['user-bad-franchise']}`;
     $(badFranchise).prop("selected", true);
-    let newWeight = `#WEIGHT${userData['user-addWeight']}`;
-    $(newWeight).prop("selected", true);
+    //let newWeight = `#WEIGHT${userData['user-addWeight']}`;
+    //$(newWeight).prop("selected", true);
 }
 /*==============================================
  * Display toppings
@@ -280,15 +288,14 @@ $('#create-user-form').submit(function(event) {
         alert("Name already in use");
         return;
     }
-    // Sanitize text input
+    // Sanitize text input (barely)
     if (!parsedData["user-name"].match(/^[\w\s]+$/)) {
         alert("No special characters");
         return;
     }
     usersObj[parsedData["user-name"]] = parsedData;
     // Push updated Users list to storage
-    let jsonString = JSON.stringify(usersObj);
-    localStorage.setItem("userCards", jsonString);
+    localStorage.setItem("userCards", JSON.stringify(usersObj));
     // Reset the form for next time
     $('#create-user-form')[0].reset();
     // Return to previous (select users) screen
@@ -301,12 +308,13 @@ $('#create-user-form').submit(function(event) {
  * This is the "main" function of the computation. Calls
  * helper functions as needed.
  *==============================================*/
-function computeOrder(userNames) {
+function computeOrder() {
     // Display results page
     $('div.page.show').toggleClass("show hide");
     $('#create-order-content').toggleClass("show hide");
 
     // Figure out how much pizza is needed
+    let userNames = JSON.parse(localStorage.getItem("activeUsers"));
     let usersObj = JSON.parse(localStorage.getItem("userCards"));
     let activeUsersObj = {};
     let numSlices = 0;
@@ -543,13 +551,18 @@ function displayOrder(orders, users) {
     let sizeOrder = ["small", "medium", "large", "x-large"];
     // Obtain totals in advance in order to add highlight for cheapest option
     let totals = [];
-    let cheapestFranchise = "";
-    let minPrice = 9999999;
+    let cheapFranch = "";
+    let expensiveFranch = "";
+    let minPrice = 9999999, maxPrice = 0;
     for([franchise, order] of Object.entries(orders)) {
         let price = getCost(franchise, order);
         if(price < minPrice) {
             minPrice = price;
-            cheapestFranchise = franchise;
+            cheapFranch = franchise;
+        }
+        if(price > maxPrice) {
+            maxPrice = price;
+            expensiveFranch = franchise;
         }
         totals.push(price);
     }
@@ -602,15 +615,18 @@ function displayOrder(orders, users) {
         $(id).append(mainWrap);
         //add highlights here
         $(highlights).append("<h1>Highlights:</h1>");
-        if(franchise === cheapestFranchise) {
-            let cheap = "<p class='green-text'>This is the cheapest option!</p>"
+        if(franchise === cheapFranch) {
+            let cheap = "<p class='green-text'>This is the least expensive order</p>";
             $(highlights).append(cheap);
+        } else if(franchise === expensiveFranch) {
+            let expensive = "<p class='red-text'>This is the most expensive order</p>";
+            $(highlights).append(expensive);
         }
         if(franchise === fav) {
-            let favorite = "<p class='green-text'>A majority said this was their favorite place</p>";
+            let favorite = "<p class='green-text'>A majority said this is their favorite place</p>";
             $(highlights).append(favorite);
         } else if(franchise === leastFav) {
-            let leastFavorite = "<p class='red-text'>A majority said this was their least favorite place</p>";
+            let leastFavorite = "<p class='red-text'>A majority said this is their least favorite place</p>";
             $(highlights).append(leastFavorite);
         }
         // able to save computations by calculating avail toppings above
@@ -626,7 +642,9 @@ function displayOrder(orders, users) {
         }
         let totalRequested = uniqueReqTop.length;
         let color = (numAvail / totalRequested > 0.5) ? "green" : "red"
-        $(highlights).append(`<p class='${color}-text'>${franchise} had ${numAvail} / ${totalRequested} of your toppings</p>`);
+        if(totalRequested > 0) { //Dont show if they ordered plain
+            $(highlights).append(`<p class='${color}-text'>They have ${numAvail} / ${totalRequested} of your toppings</p>`);
+        }
         $(highlightWrap).append(highlights);
     }
 }
@@ -646,7 +664,7 @@ function getUserOpinion(users, favorite) {
     let param = null;
     if(favorite) {
         param = "user-fav-franchise";
-    } else {param = "user-least-franchise"}
+    } else {param = "user-bad-franchise"}
     let numUsers = 0;
     for([_,userData] of Object.entries(users)) {
         tally[userData[param]]++;
@@ -665,6 +683,117 @@ function getUserOpinion(users, favorite) {
     if((max/numUsers) > 0.5) {
         return franch;
     } else {return "none"}
+}
+/*==============================================
+ * Handle Save Order button click
+ * Saves a description of the order to the view old orders page for quick reference
+ *==============================================*/
+$(document).on('click', '.save-order', function(event) {
+    event.preventDefault();
+    parseOrder(event);
+    displayPrevOrders();
+});
+/*==============================================
+ * Handle Highlight Prev order to display new one
+ *==============================================*/
+$(document).on('click', '.order-details', function(event) {
+    let orderDiv = event.currentTarget;
+    //bc these are dynamically created, the orderNum is always [1]
+    let orderNum = $(orderDiv)[0].classList[1];
+    //close the currently open one
+    $(`.highlight.show`).toggleClass("show hide");
+    $(`.highlight.hide.${orderNum}`).toggleClass("show hide");
+    if($('#default-prev-highlight').hasClass("show")) {
+        $('#default-prev-highlight').toggleClass("show hide");
+    }
+});
+/*==============================================
+ * Parses the completed order and creates an object needed to fill out the view old events page
+ *==============================================*/
+function parseOrder(data) {
+    let franchise = data.target.parentElement.childNodes[1].childNodes[1].childNodes[1].innerHTML;
+    franchise.replace(":","");
+    //  order = what we clicked->franchiseWrapper->dynamicDiv->franchiseResults->resultsBody->All text
+    let order = data.target.parentElement.childNodes[1].childNodes[1].childNodes[3].childNodes;
+    console.log(order);
+    let price = order[0].innerHTML;
+    let activeUsers = JSON.parse(localStorage.getItem("activeUsers"));
+    let obj = new Date();
+    let day = String(obj.getDate()).padStart(2,'0');
+    let month = String(obj.getMonth()+1).padStart(2,'0');
+    let year = String(obj.getFullYear());
+    let date = `Created: ${month}/${day}/${year}`;
+    let i = 1;
+    let pizzas = "";
+    while(i < order.length) {
+        if(order[i].innerText !== "") {
+            let splitArr = order[i].innerText.split(":");
+            let quarters = splitArr[1].split(/q[0-9]+ -- /);
+            console.log(quarters);
+            pizzas += `<b>${splitArr[0]}:</b><br>`;
+            for(let j = 1; j < quarters.length; j++){
+                pizzas += `q${j} -- ${quarters[j]}<br>`;
+            }
+        }
+        i++
+    }
+    //fill in object to store
+    let prevOrder = {
+        "franchise": franchise,
+        "activeUsers": activeUsers,
+        "price": price,
+        "date": date,
+        "pizzas": pizzas
+    }
+    //get all prevOrders already stored
+    let allPrev = JSON.parse(localStorage.getItem("prevOrders"));
+    //if this is the first order being saved
+    if(allPrev === null) {
+        allPrev = {};
+    }
+    allPrev[`prevOrder${Object.keys(allPrev).length}`] = prevOrder;
+    console.log(allPrev);
+    localStorage.setItem("prevOrders", JSON.stringify(allPrev));
+}
+/*==============================================
+ * Load Previously Saved Orders
+ *==============================================*/
+function displayPrevOrders() {
+    //remove all old data, new one just added
+    $('.order-details').remove();
+    $('.highlight').remove();
+    let allPrev = JSON.parse(localStorage.getItem("prevOrders"));
+    //for each saved order
+    if(allPrev !== null) {
+        let i = 0;
+        for([_,order] of Object.entries(allPrev)) {
+            //for the scroll of prev orders
+            let orderWrap = document.createElement('div');
+            $(orderWrap).addClass(`order-details order${i}`);
+            let orderTop = document.createElement('div');
+            $(orderTop).addClass("order-top");
+
+            let activeUsers = `<p>Made for ${order["activeUsers"].join(", ")}</p>`;
+            let date = `<p>${order["date"]}</p>`;
+            let franchise = `<h2>${order["franchise"]}</h2>`;
+            let pizzas = `<p>${order["pizzas"]}</p>`;
+            let price = `<p>${order["price"]}</p>`;
+            $(orderTop).append(franchise);
+            $(orderTop).append(date);
+            $(orderWrap).append(orderTop);
+            $(orderWrap).append(activeUsers);
+            $('#orders-scroll').prepend(orderWrap);
+
+            //for the selected highlighted order
+            let orderHighlight = document.createElement('div');
+            $(orderHighlight).addClass(`highlight hide order${i++}`);
+            $(orderHighlight).append(franchise);
+            $(orderHighlight).append(activeUsers);
+            $(orderHighlight).append(price);
+            $(orderHighlight).append(pizzas);
+            $('#order-highlight').append(orderHighlight);
+        }
+    }
 }
 /*==============================================
  * Update Settings
