@@ -13,7 +13,7 @@ let pizzaData = {};
 $(function() {
     var redGreen = localStorage.getItem("redGreen");
     if(redGreen === "true") {
-        $("#hamburger a").css("color", "#F6F4D3");
+        $('#hamburger a').css("color", "#F6F4D3");
     }
     // See if navigated from portfolio
     let url = window.location.href;
@@ -802,8 +802,16 @@ $("#settingsForm").submit(function(event) {
     event.preventDefault();
     var formData = $(this).serialize();
     if (formData.includes("redGreen")) {
-        localStorage.setItem("redGreen", true);
-        $("#hamburger a").css("color", "#F6F4D3");
+        if($('.show.disableRG')[0] !== undefined) {
+            localStorage.setItem("redGreen", true);
+            $("#hamburger a").css("color", "#F6F4D3");
+        } else {
+            localStorage.setItem("redGreen", false);
+            $("#hamburger a").css("color", "#4cbc5a");
+        }
+        $('.disableRG').toggleClass('show hide');
+        $('.enableRG').toggleClass('show hide');
+        $('#redGreen').prop('checked', false);
     }
     if (formData.includes("clearData")) {
         localStorage.clear();

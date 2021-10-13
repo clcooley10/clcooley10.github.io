@@ -266,7 +266,6 @@
             <div id="view-orders-wrapper">
                 <div class="order-container" id="orders-scroll">
                     <!--Dynamically add Prev orders here-->
-                    <a class="icons-link" href="https://icons8.com">link to icons source</a>
                 </div>
                 <div class="order-container" id="order-highlight">
                     <div class="show" id="default-prev-highlight">
@@ -351,7 +350,8 @@
             <form action="/" method="GET" id="settingsForm">
                 <p>Red Green Colorblind Correction:</p>
                 <input type="checkbox" id="redGreen" name="redGreen" value="true">
-                <label for="redGreen">Disable Green on Red Text (Sorry I did it for the theme)</label><br>
+                <label class="show disableRG" for="redGreen">Disable Green on Red Text (Sorry I did it for the theme)</label>
+                <label class="hide enableRG" for="redGreen">Enable original color scheme</label>
                 <p>Clear stored data:</p>
                 <input type="checkbox" id="clearData" name="clearData" value="true">
                 <label for="clearData">Deletes past orders, users, clears above setting, and reloads page</label><br><br>
